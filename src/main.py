@@ -19,13 +19,13 @@ WORK_AGE = 16
 REPRO_MIN_AGE = 18
 REPRO_MAX_AGE = 42
 
-MEET_RADIUS = 5              # raio para "conhecer"
-PAIR_CHANCE_PER_YEAR = 0.51  # chance de formar par (se tiver alguém perto)
-BIRTH_CHANCE_PER_YEAR = 0.8  # chance de ter filho (se coabitando e dentro da idade)
+MEET_RADIUS = 5               # raio para "conhecer"
+PAIR_CHANCE_PER_YEAR = 0.51   # chance de formar par (se tiver alguém perto)
+BIRTH_CHANCE_PER_YEAR = 0.8   # chance de ter filho (se coabitando e dentro da idade)
 MAX_KIDS_PER_COUPLE = 7
 
-MUTATION_CHANCE = 0.22
-MUTATION_STEP = 1            # mutação ±1
+MUTATION_CHANCE = 0.5
+MUTATION_STEP = 2
 
 # movimento
 CHILD_STEPS = 1
@@ -34,9 +34,31 @@ ELDER_AGE = 60
 ELDER_STEPS = 4
 
 # casal buscando espaço: apenas “o suficiente”
-SEEK_SPACE_TRIES = 30        # quantos candidatos avaliar por ano quando sem espaço
-SEEK_SPACE_RADIUS = 2        # raio local pra buscar um lugar melhor (sem virar migração)
-SEEK_SPACE_STEP_LIMIT = 1    # quantos passos o casal dá por ano quando travado sem espaço (1 = bem “humano”)
+SEEK_SPACE_STEP_LIMIT = 1
+
+# -------------------------
+# NOVO: "desespero social"
+# -------------------------
+# Após N anos solteiro na janela fértil, começa a procurar fora do bairro:
+DESPERATION_YEARS_1 = 3   # começa a "abrir o radar"
+DESPERATION_YEARS_2 = 6   # começa a considerar bem mais gente
+
+# Expansões de busca (Manhattan)
+EXTRA_RADIUS_L1 = 3       # radius extra no nível 1
+EXTRA_RADIUS_L2 = 10      # radius extra no nível 2
+
+# Chance base de tentar fora do bairro por ano quando desesperado
+CROSS_ZONE_PROB_L1 = 0.35
+CROSS_ZONE_PROB_L2 = 0.75
+
+# -------------------------
+# NOVO: "bairro cultural" do filho
+# -------------------------
+# Probabilidade do filho "crescer culturalmente" no bairro em que nasceu
+CULTURE_STAY_BIRTH_ZONE = 0.70
+CULTURE_PICK_PARENT_ZONE = 0.20  # escolhe zona cultural de um dos pais
+# sobra 0.10 -> aleatório leve (mistura fraca)
+
 
 # zonas (profissão -> retângulo)
 # (x0, y0, x1, y1) com x1/y1 exclusivos
@@ -44,7 +66,7 @@ PROFESSIONS = {
     "Farmer":   {"zone": (0, 0, 20, 20),  "color": (60, 200, 80)},
     "Smith":    {"zone": (20, 0, 40, 20), "color": (200, 80, 60)},
     "Merchant": {"zone": (0, 20, 20, 40), "color": (60, 120, 220)},
-    "Hunter":   {"zone": (20, 20, 40, 40),"color": (220, 200, 60)},
+    "Hunter":   {"zone": (20, 20, 40, 40), "color": (220, 200, 60)},
 }
 
 # genes
@@ -85,6 +107,13 @@ def zone_center(z):
 def in_zone(x: int, y: int, zone: Tuple[int, int, int, int]) -> bool:
     x0, y0, x1, y1 = zone
     return (x0 <= x < x1) and (y0 <= y < y1)
+
+
+def zone_of_tile(x: int, y: int) -> Optional[str]:
+    for prof, info in PROFESSIONS.items():
+        if in_zone(x, y, info["zone"]):
+            return prof
+    return None
 
 
 def random_dna() -> Dict[str, int]:
@@ -146,6 +175,10 @@ class Person:
     born_year: int = 0
     died_year: Optional[int] = None
 
+    # NOVO: tempo solteiro (somente janela fértil) e "bairro cultural"
+    years_single: int = 0
+    culture_prof: Optional[str] = None  # bairro cultural antes do trabalho
+
 
 class World:
     def __init__(self):
@@ -157,9 +190,7 @@ class World:
         self.births_last = 0
         self.deaths_last = 0
 
-        # ocupação: (x,y) -> list de pids (0..2, e 2 só se casal)
         self.occ: Dict[Tuple[int, int], List[int]] = {}
-
         self.events: List[dict] = []
 
     def log(self, etype: str, data: dict):
@@ -189,15 +220,18 @@ class World:
                     "kids_count": p.kids_count,
                     "pos": [p.x, p.y],
                     "dna": dict(p.dna),
+                    "years_single": p.years_single,
+                    "culture_prof": p.culture_prof,
                 } for p in self.people.values()
             ]
         }
         with open(path, "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)
 
-    def add_person(self, x, y, age, dna, born_year, mother=None, father=None) -> Person:
+    def add_person(self, x, y, age, dna, born_year, mother=None, father=None, culture_prof=None) -> Person:
         pid = self.next_id
         self.next_id += 1
+
         p = Person(
             pid=pid, x=x, y=y, age=age, dna=dna,
             profession=None,
@@ -207,7 +241,9 @@ class World:
             kids_count=0,
             mother_id=mother, father_id=father,
             born_year=born_year,
-            died_year=None
+            died_year=None,
+            years_single=0,
+            culture_prof=culture_prof
         )
         self.people[pid] = p
         self.occ.setdefault((x, y), []).append(pid)
@@ -224,6 +260,9 @@ class World:
                 tries += 1
 
             p = self.add_person(x=x, y=y, age=random.randint(0, 55), dna=random_dna(), born_year=0)
+            # define bairro cultural inicial pelo tile
+            p.culture_prof = zone_of_tile(p.x, p.y)
+
             if p.age >= WORK_AGE:
                 p.profession = choose_profession(p.dna)
                 self.log("profession_chosen", {"pid": p.pid, "profession": p.profession})
@@ -239,7 +278,6 @@ class World:
         if incoming_pid is None or incoming_partner is None:
             return True
 
-        # pode entrar só se o existente for o parceiro
         return existing_pid != incoming_partner
 
     def place(self, p: Person, x: int, y: int):
@@ -250,8 +288,7 @@ class World:
                 del self.occ[old]
 
         p.x, p.y = x, y
-        key = (x, y)
-        self.occ.setdefault(key, []).append(p.pid)
+        self.occ.setdefault((x, y), []).append(p.pid)
 
     def kill(self, pid: int):
         if pid not in self.people:
@@ -268,7 +305,6 @@ class World:
             "partner": p.partner_id,
         })
 
-        # dissolve par
         if p.partner_id is not None and p.partner_id in self.people:
             partner = self.people[p.partner_id]
             partner.partner_id = None
@@ -294,13 +330,11 @@ class World:
         return False
 
     def preferred_zone_for_couple(self, a: Person, b: Person) -> Optional[Tuple[int, int, int, int]]:
-        # se ambos têm a mesma profissão, prefere ficar no bairro dela
         if a.profession is not None and a.profession == b.profession:
             return PROFESSIONS[a.profession]["zone"]
         return None
 
     def zone_target_for_couple(self, a: Person, b: Person) -> Tuple[int, int]:
-        # pra score suave quando profissões diferem
         if a.profession is None and b.profession is None:
             return (a.x, a.y)
         if a.profession is None:
@@ -312,11 +346,6 @@ class World:
         return ((ax + bx) // 2, (ay + by) // 2)
 
     def choose_space_step_for_couple(self, a: Person, b: Person) -> Optional[Tuple[int, int]]:
-        """
-        Casal coabitando e sem espaço adjacente:
-        escolhe 1 passo (4-dir) que melhora a chance de ter espaço, preferindo o mesmo bairro.
-        """
-        # se já tem espaço, nem mexe
         if self.has_free_adjacent(a.x, a.y):
             return None
 
@@ -327,7 +356,6 @@ class World:
         dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
         random.shuffle(dirs)
 
-        # primeiro: tenta passo direto em 4 direções
         for dx, dy in dirs:
             nx, ny = a.x + dx, a.y + dy
             if not (0 <= nx < GRID_W and 0 <= ny < GRID_H):
@@ -340,28 +368,43 @@ class World:
             if preferred_zone is not None and in_zone(nx, ny, preferred_zone):
                 zone_bonus += 3.0
 
-            # preferir ficar perto do alvo de zona (quando profissões diferem)
             dist_zone = abs(nx - ztx) + abs(ny - zty)
-
             score = (10.0 if space_ok else 0.0) + zone_bonus - 0.2 * dist_zone
             candidates.append((score, nx, ny))
 
         if candidates:
             candidates.sort(reverse=True, key=lambda t: t[0])
-            best_score, bx, by = candidates[0]
-            # se nenhum passo melhora nada, ainda assim escolhe o melhorzinho
+            _, bx, by = candidates[0]
             return (bx, by)
 
-        # se travou total, não faz nada (cidade lotada, paciência)
         return None
 
     # =========================
     # Movimento
     # =========================
+    def target_for_person(self, p: Person) -> Tuple[int, int]:
+        # Crianças/adolescentes: tendem a ficar no bairro cultural
+        if p.profession is None:
+            if p.culture_prof is not None:
+                return zone_center(PROFESSIONS[p.culture_prof]["zone"])
+            return (p.x, p.y)
+        return zone_center(PROFESSIONS[p.profession]["zone"])
+
+    def target_for_couple(self, a: Person, b: Person) -> Tuple[int, int]:
+        if a.profession is None and b.profession is None:
+            return (a.x, a.y)
+        if a.profession is None:
+            return zone_center(PROFESSIONS[b.profession]["zone"])
+        if b.profession is None:
+            return zone_center(PROFESSIONS[a.profession]["zone"])
+        ax, ay = zone_center(PROFESSIONS[a.profession]["zone"])
+        bx, by = zone_center(PROFESSIONS[b.profession]["zone"])
+        return ((ax + bx) // 2, (ay + by) // 2)
+
     def move_person(self, p: Person):
         steps = CHILD_STEPS if p.age < WORK_AGE else (ELDER_STEPS if p.age >= ELDER_AGE else ADULT_STEPS)
-
         tx, ty = self.target_for_person(p)
+
         for _ in range(steps):
             dx = 0 if p.x == tx else (1 if tx > p.x else -1)
             dy = 0 if p.y == ty else (1 if ty > p.y else -1)
@@ -386,13 +429,7 @@ class World:
             self.place(p, nx, ny)
 
     def move_couple_unit(self, a: Person, b: Person, steps: int, tx: int, ty: int):
-        """
-        Casal ocupa o mesmo tile.
-        Regra nova:
-        - Se NÃO tem espaço adjacente pra nascer filho, dá poucos passos procurando espaço.
-        - Se tem espaço, segue a lógica normal de movimento (zona).
-        """
-        # prioridade absoluta: achar espaço mínimo local
+        # prioridade: achar espaço mínimo local pra nascer filho
         if not self.has_free_adjacent(a.x, a.y):
             for _ in range(SEEK_SPACE_STEP_LIMIT):
                 step = self.choose_space_step_for_couple(a, b)
@@ -403,7 +440,7 @@ class World:
                 self.place(b, nx, ny)
             return
 
-        # se já tem espaço, movimento normal
+        # movimento normal
         for _ in range(steps):
             dx = 0 if a.x == tx else (1 if tx > a.x else -1)
             dy = 0 if a.y == ty else (1 if ty > a.y else -1)
@@ -431,7 +468,7 @@ class World:
     def move_all(self):
         moved = set()
 
-        # move casais (uma vez por par)
+        # move casais
         for p in list(self.people.values()):
             if p.partner_id is None:
                 continue
@@ -459,23 +496,6 @@ class World:
             if p.partner_id is None:
                 self.move_person(p)
 
-    def target_for_person(self, p: Person) -> Tuple[int, int]:
-        if p.profession is None:
-            return (p.x, p.y)
-        return zone_center(PROFESSIONS[p.profession]["zone"])
-
-    def target_for_couple(self, a: Person, b: Person) -> Tuple[int, int]:
-        if a.profession is None and b.profession is None:
-            return (a.x, a.y)
-        if a.profession is None:
-            return zone_center(PROFESSIONS[b.profession]["zone"])
-        if b.profession is None:
-            return zone_center(PROFESSIONS[a.profession]["zone"])
-
-        ax, ay = zone_center(PROFESSIONS[a.profession]["zone"])
-        bx, by = zone_center(PROFESSIONS[b.profession]["zone"])
-        return ((ax + bx) // 2, (ay + by) // 2)
-
     # =========================
     # Tick anual
     # =========================
@@ -487,7 +507,16 @@ class World:
         for p in list(self.people.values()):
             p.age += 1
 
-        # 2) escolher profissão quando atingir idade de trabalho
+        # 1.5) atualizar "anos solteiro" só na janela fértil
+        for p in list(self.people.values()):
+            if p.partner_id is None and (REPRO_MIN_AGE <= p.age <= REPRO_MAX_AGE):
+                p.years_single += 1
+            else:
+                # fora da janela ou casado: não acumula pressão social
+                if p.partner_id is not None:
+                    p.years_single = 0
+
+        # 2) escolher profissão ao atingir idade de trabalho
         for p in list(self.people.values()):
             if p.profession is None and p.age >= WORK_AGE:
                 inherited = None
@@ -503,11 +532,11 @@ class World:
 
                 self.log("profession_chosen", {"pid": p.pid, "profession": p.profession})
 
-        # 3) mortes (prob cresce com idade e dna vit)
+        # 3) mortes
         for p in list(self.people.values()):
             base = 0.002
             age_factor = max(0.0, (p.age - 35) / 80.0)
-            vit = p.dna["vit"] / 10.0  # 0.1..1.0
+            vit = p.dna["vit"] / 10.0
             death_p = base + age_factor * (0.05) * (1.2 - vit)
             if random.random() < death_p:
                 self.kill(p.pid)
@@ -515,7 +544,7 @@ class World:
         # 4) mover
         self.move_all()
 
-        # 5) formar pares
+        # 5) formar pares (com “escape” fora do bairro)
         self.form_pairs()
 
         # 6) coabitar
@@ -526,6 +555,34 @@ class World:
 
         self.year += 1
 
+    # =========================
+    # NOVO: formar pares com fallback
+    # =========================
+    def _preferred_zone_for_person(self, p: Person) -> Optional[Tuple[int, int, int, int]]:
+        # adulto tem profissão, senão usa cultura
+        key = p.profession if p.profession is not None else p.culture_prof
+        if key is None:
+            return None
+        return PROFESSIONS[key]["zone"]
+
+    def _cross_zone_policy(self, p: Person) -> Tuple[bool, int]:
+        """
+        Decide se p pode procurar fora do bairro este ano e qual radius extra.
+        Mistura "desespero" com traço social (soc).
+        """
+        ys = p.years_single
+        soc = p.dna["soc"] / 10.0  # 0.1..1.0
+
+        if ys < DESPERATION_YEARS_1:
+            return (False, 0)
+
+        if ys < DESPERATION_YEARS_2:
+            prob = CROSS_ZONE_PROB_L1 * (0.6 + 0.8 * soc)
+            return (random.random() < prob, EXTRA_RADIUS_L1)
+
+        prob = CROSS_ZONE_PROB_L2 * (0.6 + 0.8 * soc)
+        return (random.random() < prob, EXTRA_RADIUS_L2)
+
     def form_pairs(self):
         singles = [p for p in self.people.values()
                    if p.partner_id is None and REPRO_MIN_AGE <= p.age <= REPRO_MAX_AGE]
@@ -535,7 +592,14 @@ class World:
             if p.partner_id is not None or p.pid not in self.people:
                 continue
 
-            candidates = []
+            p_zone = self._preferred_zone_for_person(p)
+            allow_cross, extra_r = self._cross_zone_policy(p)
+            base_r = MEET_RADIUS
+            r = base_r + (extra_r if allow_cross else 0)
+
+            candidates_same = []
+            candidates_cross = []
+
             for q in self.people.values():
                 if q.pid == p.pid:
                     continue
@@ -543,21 +607,54 @@ class World:
                     continue
                 if not (REPRO_MIN_AGE <= q.age <= REPRO_MAX_AGE):
                     continue
-                if manhattan((p.x, p.y), (q.x, q.y)) <= MEET_RADIUS:
-                    soc = (p.dna["soc"] + q.dna["soc"]) / 20.0  # 0.1..1.0
-                    candidates.append((q, soc))
 
-            if not candidates:
+                if manhattan((p.x, p.y), (q.x, q.y)) > r:
+                    continue
+
+                soc = (p.dna["soc"] + q.dna["soc"]) / 20.0  # 0.1..1.0
+
+                # classifica: mesmo bairro (zona preferida) vs fora
+                same_zone = True
+                if p_zone is not None:
+                    same_zone = in_zone(q.x, q.y, p_zone)
+
+                if same_zone:
+                    candidates_same.append((q, soc))
+                else:
+                    candidates_cross.append((q, soc))
+
+            chosen = None
+
+            # 1) prioriza SEMPRE o bairro local
+            if candidates_same:
+                chosen = random.choice(candidates_same)
+
+            # 2) se não tem ninguém local, e política deixou, tenta fora
+            elif allow_cross and candidates_cross:
+                chosen = random.choice(candidates_cross)
+
+            if chosen is None:
                 continue
 
-            q, soc = random.choice(candidates)
+            q, soc = chosen
             chance = PAIR_CHANCE_PER_YEAR * (0.6 + 0.8 * soc)
+
+            # pequeno "custo" social pra casar fora do bairro (mantém como minoria)
+            if p_zone is not None and not in_zone(q.x, q.y, p_zone):
+                chance *= 0.85
+
             if random.random() < chance:
                 p.partner_id = q.pid
                 q.partner_id = p.pid
                 p.cohabiting = False
                 q.cohabiting = False
-                self.log("pair_formed", {"a": p.pid, "b": q.pid})
+                p.years_single = 0
+                q.years_single = 0
+
+                self.log("pair_formed", {
+                    "a": p.pid, "b": q.pid,
+                    "cross_zone": (p_zone is not None and not in_zone(q.x, q.y, p_zone))
+                })
 
     def try_cohabit_pairs(self):
         visited = set()
@@ -576,11 +673,9 @@ class World:
             if p.cohabiting and (p.x, p.y) == (q.x, q.y):
                 continue
 
-            # tenta aproximar se estiverem distantes
             if manhattan((p.x, p.y), (q.x, q.y)) > 1:
                 continue
 
-            # se estão adjacentes, tenta juntar no tile de p ou q
             if manhattan((p.x, p.y), (q.x, q.y)) == 1:
                 if not self.occupied_by_non_couple(p.x, p.y, incoming_pid=q.pid, incoming_partner=p.pid):
                     self.place(q, p.x, p.y)
@@ -610,7 +705,7 @@ class World:
             if not (REPRO_MIN_AGE <= p.age <= REPRO_MAX_AGE and REPRO_MIN_AGE <= q.age <= REPRO_MAX_AGE):
                 continue
 
-            fert = (p.dna["fert"] + q.dna["fert"]) / 20.0  # 0.1..1.0
+            fert = (p.dna["fert"] + q.dna["fert"]) / 20.0
             chance = BIRTH_CHANCE_PER_YEAR * (0.6 + 0.8 * fert)
 
             if p.kids_count >= MAX_KIDS_PER_COUPLE or q.kids_count >= MAX_KIDS_PER_COUPLE:
@@ -625,14 +720,37 @@ class World:
                         spot = (nx, ny)
                         break
                 if spot is None:
-                    # sem espaço local adjacente: sem filho esse ano
                     continue
 
                 baby_dna = dna_child_from_parents(p.dna, q.dna)
+
+                # NOVO: define cultura do bebê (bairro)
+                birth_zone = zone_of_tile(p.x, p.y)  # tile do casal
+                culture = None
+                r = random.random()
+                if r < CULTURE_STAY_BIRTH_ZONE and birth_zone is not None:
+                    culture = birth_zone
+                elif r < CULTURE_STAY_BIRTH_ZONE + CULTURE_PICK_PARENT_ZONE:
+                    # escolhe cultura de um dos pais (se tiver profissão/cultura)
+                    opts = []
+                    if p.profession is not None:
+                        opts.append(p.profession)
+                    elif p.culture_prof is not None:
+                        opts.append(p.culture_prof)
+                    if q.profession is not None:
+                        opts.append(q.profession)
+                    elif q.culture_prof is not None:
+                        opts.append(q.culture_prof)
+                    culture = random.choice(opts) if opts else birth_zone
+                else:
+                    # leve aleatoriedade: bairro cultural aleatório (mistura fraca)
+                    culture = random.choice(list(PROFESSIONS.keys()))
+
                 baby = self.add_person(
                     x=spot[0], y=spot[1], age=0, dna=baby_dna,
                     born_year=self.year,
-                    mother=p.pid, father=q.pid
+                    mother=p.pid, father=q.pid,
+                    culture_prof=culture
                 )
 
                 self.generation += 1
@@ -652,6 +770,7 @@ class World:
                     "pos": [baby.x, baby.y],
                     "dna": dict(baby.dna),
                     "generation": self.generation,
+                    "culture_prof": baby.culture_prof
                 })
 
 
@@ -661,7 +780,6 @@ class World:
 def draw_world(surface, world: World, font, selected_tile: Optional[Tuple[int, int]]):
     surface.fill(BG)
 
-    # fundo das zonas
     for _, info in PROFESSIONS.items():
         x0, y0, x1, y1 = info["zone"]
         c = info["color"]
@@ -669,17 +787,19 @@ def draw_world(surface, world: World, font, selected_tile: Optional[Tuple[int, i
         rect = pygame.Rect(x0 * TILE_SIZE, y0 * TILE_SIZE, (x1 - x0) * TILE_SIZE, (y1 - y0) * TILE_SIZE)
         pygame.draw.rect(surface, zone_col, rect)
 
-    # grid
     for x in range(GRID_W + 1):
         pygame.draw.line(surface, GRID_LINE, (x * TILE_SIZE, 0), (x * TILE_SIZE, GRID_H * TILE_SIZE), 1)
     for y in range(GRID_H + 1):
         pygame.draw.line(surface, GRID_LINE, (0, y * TILE_SIZE), (GRID_W * TILE_SIZE, y * TILE_SIZE), 1)
 
-    # pessoas
     for p in world.people.values():
         col = (200, 200, 200)
         if p.profession is not None:
             col = PROFESSIONS[p.profession]["color"]
+        elif p.culture_prof is not None:
+            # criança/adolescente colore levemente pela cultura (mesma cor, mas mais apagada)
+            c = PROFESSIONS[p.culture_prof]["color"]
+            col = (c[0] // 2, c[1] // 2, c[2] // 2)
 
         cx = p.x * TILE_SIZE + TILE_SIZE // 2
         cy = p.y * TILE_SIZE + TILE_SIZE // 2
@@ -689,13 +809,11 @@ def draw_world(surface, world: World, font, selected_tile: Optional[Tuple[int, i
         if p.cohabiting:
             pygame.draw.circle(surface, (255, 255, 255), (cx, cy), r + 1, 1)
 
-    # tile selecionado
     if selected_tile is not None:
         x, y = selected_tile
         rect = pygame.Rect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE)
         pygame.draw.rect(surface, SELECT, rect, 2)
 
-    # HUD
     pop = len(world.people)
     txt = f"Ano: {world.year}  | Pop: {pop}  | Nasc: {world.births_last}  | Mortes: {world.deaths_last}"
     surf = font.render(txt, True, TEXT)
@@ -737,7 +855,6 @@ def main():
         draw_world(screen, world, font, selected_tile)
         pygame.display.flip()
 
-    # salva log
     ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     out = f"sim_log_{ts}.json"
     world.save_to_file(out)

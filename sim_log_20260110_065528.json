@@ -1,0 +1,5867 @@
+{
+  "meta": {
+    "grid_w": 40,
+    "grid_h": 40,
+    "start_pop": 80,
+    "year_final": 264
+  },
+  "events": [
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 2,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 4,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 7,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 8,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 9,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 11,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 12,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 13,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 14,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 15,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 17,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 19,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 20,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 22,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 23,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 24,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 25,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 26,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 27,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 29,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 30,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 31,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 34,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 35,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 36,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 38,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 41,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 44,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 45,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 46,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 47,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 48,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 49,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 50,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 51,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 52,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 53,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 54,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 55,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 57,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 61,
+      "profession": "Smith"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 64,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 65,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 67,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 68,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 69,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 70,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 71,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 72,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 73,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 74,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 75,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 77,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 78,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 79,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 80,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 5,
+      "profession": "Farmer"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 32,
+      "profession": "Merchant"
+    },
+    {
+      "year": 0,
+      "type": "profession_chosen",
+      "pid": 56,
+      "profession": "Hunter"
+    },
+    {
+      "year": 0,
+      "type": "death",
+      "pid": 12,
+      "age": 42,
+      "profession": "Farmer",
+      "pos": [
+        27,
+        38
+      ],
+      "partner": null
+    },
+    {
+      "year": 0,
+      "type": "pair_formed",
+      "a": 45,
+      "b": 15,
+      "cross_zone": false
+    },
+    {
+      "year": 1,
+      "type": "pair_formed",
+      "a": 31,
+      "b": 70,
+      "cross_zone": false
+    },
+    {
+      "year": 1,
+      "type": "pair_formed",
+      "a": 14,
+      "b": 64,
+      "cross_zone": false
+    },
+    {
+      "year": 1,
+      "type": "pair_formed",
+      "a": 24,
+      "b": 38,
+      "cross_zone": false
+    },
+    {
+      "year": 1,
+      "type": "pair_formed",
+      "a": 55,
+      "b": 72,
+      "cross_zone": false
+    },
+    {
+      "year": 1,
+      "type": "cohabitation",
+      "a": 31,
+      "b": 70,
+      "pos": [
+        33,
+        29
+      ]
+    },
+    {
+      "year": 1,
+      "type": "marriage",
+      "a": 31,
+      "b": 70,
+      "pos": [
+        33,
+        29
+      ]
+    },
+    {
+      "year": 1,
+      "type": "birth",
+      "baby": 81,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        34,
+        29
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 7,
+        "soc": 2,
+        "vit": 9
+      },
+      "generation": 1,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 2,
+      "type": "profession_chosen",
+      "pid": 33,
+      "profession": "Hunter"
+    },
+    {
+      "year": 2,
+      "type": "profession_chosen",
+      "pid": 62,
+      "profession": "Farmer"
+    },
+    {
+      "year": 2,
+      "type": "pair_formed",
+      "a": 2,
+      "b": 53,
+      "cross_zone": false
+    },
+    {
+      "year": 2,
+      "type": "pair_formed",
+      "a": 80,
+      "b": 54,
+      "cross_zone": true
+    },
+    {
+      "year": 2,
+      "type": "pair_formed",
+      "a": 5,
+      "b": 26,
+      "cross_zone": false
+    },
+    {
+      "year": 2,
+      "type": "cohabitation",
+      "a": 14,
+      "b": 64,
+      "pos": [
+        14,
+        30
+      ]
+    },
+    {
+      "year": 2,
+      "type": "marriage",
+      "a": 14,
+      "b": 64,
+      "pos": [
+        14,
+        30
+      ]
+    },
+    {
+      "year": 2,
+      "type": "birth",
+      "baby": 82,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        14,
+        29
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 2,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 2,
+      "type": "birth",
+      "baby": 83,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        30,
+        29
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 7,
+        "soc": 9,
+        "vit": 9
+      },
+      "generation": 3,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 3,
+      "type": "profession_chosen",
+      "pid": 37,
+      "profession": "Smith"
+    },
+    {
+      "year": 3,
+      "type": "pair_formed",
+      "a": 49,
+      "b": 73,
+      "cross_zone": false
+    },
+    {
+      "year": 3,
+      "type": "pair_formed",
+      "a": 79,
+      "b": 74,
+      "cross_zone": true
+    },
+    {
+      "year": 3,
+      "type": "birth",
+      "baby": 84,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        15,
+        30
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 3
+      },
+      "generation": 4,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 4,
+      "type": "profession_chosen",
+      "pid": 10,
+      "profession": "Merchant"
+    },
+    {
+      "year": 4,
+      "type": "profession_chosen",
+      "pid": 63,
+      "profession": "Merchant"
+    },
+    {
+      "year": 4,
+      "type": "pair_formed",
+      "a": 68,
+      "b": 23,
+      "cross_zone": true
+    },
+    {
+      "year": 4,
+      "type": "cohabitation",
+      "a": 5,
+      "b": 26,
+      "pos": [
+        10,
+        10
+      ]
+    },
+    {
+      "year": 4,
+      "type": "marriage",
+      "a": 5,
+      "b": 26,
+      "pos": [
+        10,
+        10
+      ]
+    },
+    {
+      "year": 4,
+      "type": "birth",
+      "baby": 85,
+      "mother": 5,
+      "father": 26,
+      "pos": [
+        10,
+        11
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 6,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 5,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 4,
+      "type": "birth",
+      "baby": 86,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        14,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 6,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 4,
+      "type": "birth",
+      "baby": 87,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        25,
+        29
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 7,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 5,
+      "type": "death",
+      "pid": 41,
+      "age": 58,
+      "profession": "Hunter",
+      "pos": [
+        6,
+        21
+      ],
+      "partner": null
+    },
+    {
+      "year": 5,
+      "type": "pair_formed",
+      "a": 11,
+      "b": 65,
+      "cross_zone": false
+    },
+    {
+      "year": 5,
+      "type": "pair_formed",
+      "a": 8,
+      "b": 56,
+      "cross_zone": false
+    },
+    {
+      "year": 5,
+      "type": "pair_formed",
+      "a": 44,
+      "b": 32,
+      "cross_zone": true
+    },
+    {
+      "year": 5,
+      "type": "cohabitation",
+      "a": 32,
+      "b": 44,
+      "pos": [
+        23,
+        30
+      ]
+    },
+    {
+      "year": 5,
+      "type": "birth",
+      "baby": 88,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        14,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 9,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 8,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 5,
+      "type": "birth",
+      "baby": 89,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        25,
+        31
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 7,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 9,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 5,
+      "type": "marriage",
+      "a": 32,
+      "b": 44,
+      "pos": [
+        23,
+        30
+      ]
+    },
+    {
+      "year": 5,
+      "type": "birth",
+      "baby": 90,
+      "mother": 32,
+      "father": 44,
+      "pos": [
+        23,
+        31
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 9,
+        "soc": 1,
+        "vit": 1
+      },
+      "generation": 10,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 6,
+      "type": "profession_chosen",
+      "pid": 39,
+      "profession": "Merchant"
+    },
+    {
+      "year": 6,
+      "type": "birth",
+      "baby": 91,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        23,
+        28
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 9
+      },
+      "generation": 11,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 7,
+      "type": "profession_chosen",
+      "pid": 59,
+      "profession": "Farmer"
+    },
+    {
+      "year": 7,
+      "type": "profession_chosen",
+      "pid": 66,
+      "profession": "Merchant"
+    },
+    {
+      "year": 7,
+      "type": "death",
+      "pid": 78,
+      "age": 50,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 7,
+      "type": "pair_formed",
+      "a": 77,
+      "b": 33,
+      "cross_zone": true
+    },
+    {
+      "year": 7,
+      "type": "birth",
+      "baby": 92,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        14,
+        31
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 9,
+        "soc": 6,
+        "vit": 4
+      },
+      "generation": 12,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 7,
+      "type": "birth",
+      "baby": 93,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        24,
+        29
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 7,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 13,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 8,
+      "type": "cohabitation",
+      "a": 15,
+      "b": 45,
+      "pos": [
+        10,
+        29
+      ]
+    },
+    {
+      "year": 8,
+      "type": "birth",
+      "baby": 94,
+      "mother": 5,
+      "father": 26,
+      "pos": [
+        11,
+        10
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 6,
+        "soc": 1,
+        "vit": 3
+      },
+      "generation": 14,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 8,
+      "type": "birth",
+      "baby": 95,
+      "mother": 31,
+      "father": 70,
+      "pos": [
+        24,
+        29
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 4,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 15,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 9,
+      "type": "profession_chosen",
+      "pid": 16,
+      "profession": "Merchant"
+    },
+    {
+      "year": 9,
+      "type": "profession_chosen",
+      "pid": 43,
+      "profession": "Merchant"
+    },
+    {
+      "year": 9,
+      "type": "birth",
+      "baby": 96,
+      "mother": 14,
+      "father": 64,
+      "pos": [
+        14,
+        29
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 10,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 16,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 10,
+      "type": "pair_formed",
+      "a": 62,
+      "b": 37,
+      "cross_zone": false
+    },
+    {
+      "year": 11,
+      "type": "profession_chosen",
+      "pid": 6,
+      "profession": "Farmer"
+    },
+    {
+      "year": 11,
+      "type": "profession_chosen",
+      "pid": 42,
+      "profession": "Farmer"
+    },
+    {
+      "year": 11,
+      "type": "profession_chosen",
+      "pid": 60,
+      "profession": "Farmer"
+    },
+    {
+      "year": 11,
+      "type": "pair_formed",
+      "a": 71,
+      "b": 43,
+      "cross_zone": false
+    },
+    {
+      "year": 11,
+      "type": "pair_formed",
+      "a": 10,
+      "b": 39,
+      "cross_zone": true
+    },
+    {
+      "year": 12,
+      "type": "profession_chosen",
+      "pid": 28,
+      "profession": "Merchant"
+    },
+    {
+      "year": 12,
+      "type": "profession_chosen",
+      "pid": 40,
+      "profession": "Hunter"
+    },
+    {
+      "year": 13,
+      "type": "profession_chosen",
+      "pid": 21,
+      "profession": "Smith"
+    },
+    {
+      "year": 13,
+      "type": "profession_chosen",
+      "pid": 58,
+      "profession": "Hunter"
+    },
+    {
+      "year": 13,
+      "type": "profession_chosen",
+      "pid": 76,
+      "profession": "Smith"
+    },
+    {
+      "year": 13,
+      "type": "death",
+      "pid": 31,
+      "age": 35,
+      "profession": "Hunter",
+      "pos": [
+        23,
+        28
+      ],
+      "partner": 70
+    },
+    {
+      "year": 13,
+      "type": "pair_formed",
+      "a": 63,
+      "b": 66,
+      "cross_zone": false
+    },
+    {
+      "year": 13,
+      "type": "birth",
+      "baby": 97,
+      "mother": 5,
+      "father": 26,
+      "pos": [
+        10,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 17,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 14,
+      "type": "profession_chosen",
+      "pid": 1,
+      "profession": "Merchant"
+    },
+    {
+      "year": 14,
+      "type": "profession_chosen",
+      "pid": 3,
+      "profession": "Smith"
+    },
+    {
+      "year": 14,
+      "type": "pair_formed",
+      "a": 59,
+      "b": 6,
+      "cross_zone": true
+    },
+    {
+      "year": 14,
+      "type": "cohabitation",
+      "a": 6,
+      "b": 59,
+      "pos": [
+        30,
+        10
+      ]
+    },
+    {
+      "year": 14,
+      "type": "marriage",
+      "a": 6,
+      "b": 59,
+      "pos": [
+        30,
+        10
+      ]
+    },
+    {
+      "year": 14,
+      "type": "birth",
+      "baby": 98,
+      "mother": 6,
+      "father": 59,
+      "pos": [
+        30,
+        11
+      ],
+      "dna": {
+        "speed": 6,
+        "fert": 10,
+        "soc": 1,
+        "vit": 3
+      },
+      "generation": 18,
+      "culture_prof": "Smith"
+    },
+    {
+      "year": 15,
+      "type": "profession_chosen",
+      "pid": 18,
+      "profession": "Farmer"
+    },
+    {
+      "year": 15,
+      "type": "death",
+      "pid": 67,
+      "age": 63,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        21
+      ],
+      "partner": null
+    },
+    {
+      "year": 15,
+      "type": "pair_formed",
+      "a": 76,
+      "b": 40,
+      "cross_zone": false
+    },
+    {
+      "year": 15,
+      "type": "birth",
+      "baby": 99,
+      "mother": 5,
+      "father": 26,
+      "pos": [
+        10,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 6,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 19,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 16,
+      "type": "death",
+      "pid": 39,
+      "age": 26,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        22
+      ],
+      "partner": 10
+    },
+    {
+      "year": 17,
+      "type": "profession_chosen",
+      "pid": 81,
+      "profession": "Merchant"
+    },
+    {
+      "year": 17,
+      "type": "death",
+      "pid": 11,
+      "age": 52,
+      "profession": "Merchant",
+      "pos": [
+        18,
+        30
+      ],
+      "partner": 65
+    },
+    {
+      "year": 17,
+      "type": "death",
+      "pid": 15,
+      "age": 48,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        30
+      ],
+      "partner": 45
+    },
+    {
+      "year": 17,
+      "type": "pair_formed",
+      "a": 18,
+      "b": 1,
+      "cross_zone": false
+    },
+    {
+      "year": 17,
+      "type": "pair_formed",
+      "a": 60,
+      "b": 58,
+      "cross_zone": false
+    },
+    {
+      "year": 17,
+      "type": "cohabitation",
+      "a": 58,
+      "b": 60,
+      "pos": [
+        17,
+        10
+      ]
+    },
+    {
+      "year": 18,
+      "type": "profession_chosen",
+      "pid": 82,
+      "profession": "Merchant"
+    },
+    {
+      "year": 18,
+      "type": "profession_chosen",
+      "pid": 83,
+      "profession": "Merchant"
+    },
+    {
+      "year": 18,
+      "type": "marriage",
+      "a": 58,
+      "b": 60,
+      "pos": [
+        18,
+        13
+      ]
+    },
+    {
+      "year": 18,
+      "type": "birth",
+      "baby": 100,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        19,
+        13
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 5,
+        "soc": 2,
+        "vit": 3
+      },
+      "generation": 20,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 19,
+      "type": "profession_chosen",
+      "pid": 84,
+      "profession": "Hunter"
+    },
+    {
+      "year": 19,
+      "type": "birth",
+      "baby": 101,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        17,
+        13
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 5,
+        "soc": 1,
+        "vit": 5
+      },
+      "generation": 21,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 20,
+      "type": "profession_chosen",
+      "pid": 85,
+      "profession": "Farmer"
+    },
+    {
+      "year": 20,
+      "type": "profession_chosen",
+      "pid": 86,
+      "profession": "Merchant"
+    },
+    {
+      "year": 20,
+      "type": "profession_chosen",
+      "pid": 87,
+      "profession": "Merchant"
+    },
+    {
+      "year": 20,
+      "type": "death",
+      "pid": 47,
+      "age": 63,
+      "profession": "Farmer",
+      "pos": [
+        14,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 20,
+      "type": "pair_formed",
+      "a": 10,
+      "b": 82,
+      "cross_zone": false
+    },
+    {
+      "year": 20,
+      "type": "pair_formed",
+      "a": 16,
+      "b": 42,
+      "cross_zone": false
+    },
+    {
+      "year": 21,
+      "type": "profession_chosen",
+      "pid": 88,
+      "profession": "Merchant"
+    },
+    {
+      "year": 21,
+      "type": "profession_chosen",
+      "pid": 89,
+      "profession": "Merchant"
+    },
+    {
+      "year": 21,
+      "type": "profession_chosen",
+      "pid": 90,
+      "profession": "Merchant"
+    },
+    {
+      "year": 21,
+      "type": "death",
+      "pid": 4,
+      "age": 77,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 21,
+      "type": "death",
+      "pid": 65,
+      "age": 57,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        32
+      ],
+      "partner": null
+    },
+    {
+      "year": 21,
+      "type": "pair_formed",
+      "a": 28,
+      "b": 83,
+      "cross_zone": true
+    },
+    {
+      "year": 21,
+      "type": "pair_formed",
+      "a": 3,
+      "b": 21,
+      "cross_zone": false
+    },
+    {
+      "year": 21,
+      "type": "birth",
+      "baby": 102,
+      "mother": 5,
+      "father": 26,
+      "pos": [
+        11,
+        10
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 2,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 22,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 21,
+      "type": "birth",
+      "baby": 103,
+      "mother": 6,
+      "father": 59,
+      "pos": [
+        30,
+        9
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 10,
+        "soc": 4,
+        "vit": 10
+      },
+      "generation": 23,
+      "culture_prof": "Smith"
+    },
+    {
+      "year": 22,
+      "type": "profession_chosen",
+      "pid": 91,
+      "profession": "Merchant"
+    },
+    {
+      "year": 22,
+      "type": "death",
+      "pid": 29,
+      "age": 77,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 22,
+      "type": "death",
+      "pid": 57,
+      "age": 65,
+      "profession": "Farmer",
+      "pos": [
+        14,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 22,
+      "type": "pair_formed",
+      "a": 86,
+      "b": 84,
+      "cross_zone": false
+    },
+    {
+      "year": 22,
+      "type": "cohabitation",
+      "a": 1,
+      "b": 18,
+      "pos": [
+        10,
+        8
+      ]
+    },
+    {
+      "year": 22,
+      "type": "marriage",
+      "a": 1,
+      "b": 18,
+      "pos": [
+        10,
+        8
+      ]
+    },
+    {
+      "year": 22,
+      "type": "birth",
+      "baby": 104,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        9,
+        8
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 6,
+        "vit": 9
+      },
+      "generation": 24,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 22,
+      "type": "birth",
+      "baby": 105,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        21,
+        20
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 1,
+        "soc": 2,
+        "vit": 5
+      },
+      "generation": 25,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 23,
+      "type": "profession_chosen",
+      "pid": 92,
+      "profession": "Merchant"
+    },
+    {
+      "year": 23,
+      "type": "profession_chosen",
+      "pid": 93,
+      "profession": "Merchant"
+    },
+    {
+      "year": 23,
+      "type": "death",
+      "pid": 75,
+      "age": 62,
+      "profession": "Merchant",
+      "pos": [
+        24,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 23,
+      "type": "birth",
+      "baby": 106,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        10,
+        7
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 10,
+        "soc": 10,
+        "vit": 2
+      },
+      "generation": 26,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 23,
+      "type": "birth",
+      "baby": 107,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        20,
+        21
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 1,
+        "soc": 2,
+        "vit": 5
+      },
+      "generation": 27,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 24,
+      "type": "profession_chosen",
+      "pid": 94,
+      "profession": "Farmer"
+    },
+    {
+      "year": 24,
+      "type": "profession_chosen",
+      "pid": 95,
+      "profession": "Merchant"
+    },
+    {
+      "year": 24,
+      "type": "pair_formed",
+      "a": 81,
+      "b": 91,
+      "cross_zone": false
+    },
+    {
+      "year": 24,
+      "type": "pair_formed",
+      "a": 87,
+      "b": 89,
+      "cross_zone": true
+    },
+    {
+      "year": 24,
+      "type": "cohabitation",
+      "a": 87,
+      "b": 89,
+      "pos": [
+        29,
+        30
+      ]
+    },
+    {
+      "year": 24,
+      "type": "birth",
+      "baby": 108,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        9,
+        8
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 6,
+        "vit": 2
+      },
+      "generation": 28,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 24,
+      "type": "birth",
+      "baby": 109,
+      "mother": 6,
+      "father": 59,
+      "pos": [
+        31,
+        10
+      ],
+      "dna": {
+        "speed": 6,
+        "fert": 9,
+        "soc": 1,
+        "vit": 10
+      },
+      "generation": 29,
+      "culture_prof": "Smith"
+    },
+    {
+      "year": 24,
+      "type": "marriage",
+      "a": 87,
+      "b": 89,
+      "pos": [
+        29,
+        30
+      ]
+    },
+    {
+      "year": 24,
+      "type": "birth",
+      "baby": 110,
+      "mother": 87,
+      "father": 89,
+      "pos": [
+        28,
+        30
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 30,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 25,
+      "type": "profession_chosen",
+      "pid": 96,
+      "profession": "Merchant"
+    },
+    {
+      "year": 25,
+      "type": "pair_formed",
+      "a": 88,
+      "b": 92,
+      "cross_zone": false
+    },
+    {
+      "year": 25,
+      "type": "cohabitation",
+      "a": 88,
+      "b": 92,
+      "pos": [
+        11,
+        31
+      ]
+    },
+    {
+      "year": 25,
+      "type": "birth",
+      "baby": 111,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        11,
+        8
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 6,
+        "vit": 9
+      },
+      "generation": 31,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 25,
+      "type": "birth",
+      "baby": 112,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        20,
+        21
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 1,
+        "soc": 2,
+        "vit": 3
+      },
+      "generation": 32,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 25,
+      "type": "birth",
+      "baby": 113,
+      "mother": 87,
+      "father": 89,
+      "pos": [
+        29,
+        31
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 33,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 25,
+      "type": "marriage",
+      "a": 88,
+      "b": 92,
+      "pos": [
+        11,
+        31
+      ]
+    },
+    {
+      "year": 25,
+      "type": "birth",
+      "baby": 114,
+      "mother": 88,
+      "father": 92,
+      "pos": [
+        11,
+        32
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 9,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 34,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 26,
+      "type": "pair_formed",
+      "a": 94,
+      "b": 85,
+      "cross_zone": false
+    },
+    {
+      "year": 26,
+      "type": "birth",
+      "baby": 115,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        10,
+        7
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 10,
+        "vit": 9
+      },
+      "generation": 35,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 26,
+      "type": "birth",
+      "baby": 116,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        21,
+        20
+      ],
+      "dna": {
+        "speed": 6,
+        "fert": 1,
+        "soc": 2,
+        "vit": 5
+      },
+      "generation": 36,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 26,
+      "type": "birth",
+      "baby": 117,
+      "mother": 87,
+      "father": 89,
+      "pos": [
+        29,
+        31
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 10,
+        "vit": 4
+      },
+      "generation": 37,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 27,
+      "type": "death",
+      "pid": 17,
+      "age": 69,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 27,
+      "type": "death",
+      "pid": 20,
+      "age": 65,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 27,
+      "type": "pair_formed",
+      "a": 90,
+      "b": 93,
+      "cross_zone": true
+    },
+    {
+      "year": 28,
+      "type": "death",
+      "pid": 80,
+      "age": 50,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        27
+      ],
+      "partner": 54
+    },
+    {
+      "year": 28,
+      "type": "birth",
+      "baby": 118,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        10,
+        7
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 6,
+        "vit": 9
+      },
+      "generation": 38,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 29,
+      "type": "profession_chosen",
+      "pid": 97,
+      "profession": "Farmer"
+    },
+    {
+      "year": 29,
+      "type": "death",
+      "pid": 36,
+      "age": 79,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 29,
+      "type": "birth",
+      "baby": 119,
+      "mother": 58,
+      "father": 60,
+      "pos": [
+        20,
+        21
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 2,
+        "vit": 3
+      },
+      "generation": 39,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 30,
+      "type": "profession_chosen",
+      "pid": 98,
+      "profession": "Farmer"
+    },
+    {
+      "year": 30,
+      "type": "birth",
+      "baby": 120,
+      "mother": 1,
+      "father": 18,
+      "pos": [
+        11,
+        8
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 8,
+        "soc": 10,
+        "vit": 1
+      },
+      "generation": 40,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 30,
+      "type": "birth",
+      "baby": 121,
+      "mother": 87,
+      "father": 89,
+      "pos": [
+        29,
+        31
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 41,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 31,
+      "type": "profession_chosen",
+      "pid": 99,
+      "profession": "Farmer"
+    },
+    {
+      "year": 31,
+      "type": "cohabitation",
+      "a": 90,
+      "b": 93,
+      "pos": [
+        23,
+        30
+      ]
+    },
+    {
+      "year": 31,
+      "type": "marriage",
+      "a": 90,
+      "b": 93,
+      "pos": [
+        23,
+        30
+      ]
+    },
+    {
+      "year": 31,
+      "type": "birth",
+      "baby": 122,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        24,
+        30
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 7,
+        "soc": 1,
+        "vit": 1
+      },
+      "generation": 42,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 32,
+      "type": "cohabitation",
+      "a": 8,
+      "b": 56,
+      "pos": [
+        30,
+        19
+      ]
+    },
+    {
+      "year": 32,
+      "type": "birth",
+      "baby": 123,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        29
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 5,
+        "soc": 9,
+        "vit": 1
+      },
+      "generation": 43,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 33,
+      "type": "death",
+      "pid": 22,
+      "age": 81,
+      "profession": "Smith",
+      "pos": [
+        30,
+        20
+      ],
+      "partner": null
+    },
+    {
+      "year": 33,
+      "type": "death",
+      "pid": 73,
+      "age": 57,
+      "profession": "Hunter",
+      "pos": [
+        20,
+        30
+      ],
+      "partner": 49
+    },
+    {
+      "year": 33,
+      "type": "pair_formed",
+      "a": 97,
+      "b": 99,
+      "cross_zone": false
+    },
+    {
+      "year": 33,
+      "type": "pair_formed",
+      "a": 96,
+      "b": 95,
+      "cross_zone": true
+    },
+    {
+      "year": 33,
+      "type": "birth",
+      "baby": 124,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        31
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 9,
+        "soc": 1,
+        "vit": 1
+      },
+      "generation": 44,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 34,
+      "type": "profession_chosen",
+      "pid": 100,
+      "profession": "Hunter"
+    },
+    {
+      "year": 34,
+      "type": "birth",
+      "baby": 125,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        31
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 9,
+        "soc": 1,
+        "vit": 4
+      },
+      "generation": 45,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 35,
+      "type": "profession_chosen",
+      "pid": 101,
+      "profession": "Hunter"
+    },
+    {
+      "year": 35,
+      "type": "birth",
+      "baby": 126,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        29
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 9,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 46,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 36,
+      "type": "birth",
+      "baby": 127,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        31
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 9,
+        "soc": 1,
+        "vit": 4
+      },
+      "generation": 47,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 37,
+      "type": "profession_chosen",
+      "pid": 102,
+      "profession": "Farmer"
+    },
+    {
+      "year": 37,
+      "type": "profession_chosen",
+      "pid": 103,
+      "profession": "Farmer"
+    },
+    {
+      "year": 37,
+      "type": "death",
+      "pid": 35,
+      "age": 83,
+      "profession": "Hunter",
+      "pos": [
+        29,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 37,
+      "type": "birth",
+      "baby": 128,
+      "mother": 90,
+      "father": 93,
+      "pos": [
+        23,
+        29
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 7,
+        "soc": 7,
+        "vit": 4
+      },
+      "generation": 48,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 38,
+      "type": "profession_chosen",
+      "pid": 104,
+      "profession": "Merchant"
+    },
+    {
+      "year": 38,
+      "type": "profession_chosen",
+      "pid": 105,
+      "profession": "Hunter"
+    },
+    {
+      "year": 38,
+      "type": "birth",
+      "baby": 129,
+      "mother": 87,
+      "father": 89,
+      "pos": [
+        29,
+        31
+      ],
+      "dna": {
+        "speed": 7,
+        "fert": 4,
+        "soc": 9,
+        "vit": 4
+      },
+      "generation": 49,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 39,
+      "type": "profession_chosen",
+      "pid": 106,
+      "profession": "Merchant"
+    },
+    {
+      "year": 39,
+      "type": "profession_chosen",
+      "pid": 107,
+      "profession": "Hunter"
+    },
+    {
+      "year": 39,
+      "type": "death",
+      "pid": 66,
+      "age": 48,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        29
+      ],
+      "partner": 63
+    },
+    {
+      "year": 39,
+      "type": "death",
+      "pid": 85,
+      "age": 35,
+      "profession": "Farmer",
+      "pos": [
+        8,
+        10
+      ],
+      "partner": 94
+    },
+    {
+      "year": 39,
+      "type": "pair_formed",
+      "a": 94,
+      "b": 102,
+      "cross_zone": false
+    },
+    {
+      "year": 39,
+      "type": "birth",
+      "baby": 130,
+      "mother": 88,
+      "father": 92,
+      "pos": [
+        12,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 9,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 50,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 40,
+      "type": "profession_chosen",
+      "pid": 108,
+      "profession": "Merchant"
+    },
+    {
+      "year": 40,
+      "type": "profession_chosen",
+      "pid": 109,
+      "profession": "Farmer"
+    },
+    {
+      "year": 40,
+      "type": "profession_chosen",
+      "pid": 110,
+      "profession": "Merchant"
+    },
+    {
+      "year": 40,
+      "type": "pair_formed",
+      "a": 98,
+      "b": 104,
+      "cross_zone": false
+    },
+    {
+      "year": 41,
+      "type": "profession_chosen",
+      "pid": 111,
+      "profession": "Merchant"
+    },
+    {
+      "year": 41,
+      "type": "profession_chosen",
+      "pid": 112,
+      "profession": "Smith"
+    },
+    {
+      "year": 41,
+      "type": "profession_chosen",
+      "pid": 113,
+      "profession": "Merchant"
+    },
+    {
+      "year": 41,
+      "type": "profession_chosen",
+      "pid": 114,
+      "profession": "Merchant"
+    },
+    {
+      "year": 42,
+      "type": "profession_chosen",
+      "pid": 115,
+      "profession": "Merchant"
+    },
+    {
+      "year": 42,
+      "type": "profession_chosen",
+      "pid": 116,
+      "profession": "Hunter"
+    },
+    {
+      "year": 42,
+      "type": "profession_chosen",
+      "pid": 117,
+      "profession": "Merchant"
+    },
+    {
+      "year": 42,
+      "type": "death",
+      "pid": 103,
+      "age": 21,
+      "profession": "Farmer",
+      "pos": [
+        25,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 43,
+      "type": "death",
+      "pid": 84,
+      "age": 40,
+      "profession": "Hunter",
+      "pos": [
+        21,
+        29
+      ],
+      "partner": 86
+    },
+    {
+      "year": 43,
+      "type": "death",
+      "pid": 93,
+      "age": 36,
+      "profession": "Merchant",
+      "pos": [
+        23,
+        30
+      ],
+      "partner": 90
+    },
+    {
+      "year": 43,
+      "type": "pair_formed",
+      "a": 105,
+      "b": 112,
+      "cross_zone": false
+    },
+    {
+      "year": 44,
+      "type": "profession_chosen",
+      "pid": 118,
+      "profession": "Merchant"
+    },
+    {
+      "year": 44,
+      "type": "pair_formed",
+      "a": 86,
+      "b": 114,
+      "cross_zone": false
+    },
+    {
+      "year": 44,
+      "type": "pair_formed",
+      "a": 107,
+      "b": 101,
+      "cross_zone": false
+    },
+    {
+      "year": 44,
+      "type": "cohabitation",
+      "a": 86,
+      "b": 114,
+      "pos": [
+        12,
+        32
+      ]
+    },
+    {
+      "year": 44,
+      "type": "cohabitation",
+      "a": 94,
+      "b": 102,
+      "pos": [
+        12,
+        10
+      ]
+    },
+    {
+      "year": 44,
+      "type": "marriage",
+      "a": 86,
+      "b": 114,
+      "pos": [
+        12,
+        32
+      ]
+    },
+    {
+      "year": 44,
+      "type": "birth",
+      "baby": 131,
+      "mother": 86,
+      "father": 114,
+      "pos": [
+        13,
+        32
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 7,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 51,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 44,
+      "type": "birth",
+      "baby": 132,
+      "mother": 88,
+      "father": 92,
+      "pos": [
+        11,
+        32
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 7,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 52,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 44,
+      "type": "marriage",
+      "a": 94,
+      "b": 102,
+      "pos": [
+        12,
+        10
+      ]
+    },
+    {
+      "year": 44,
+      "type": "birth",
+      "baby": 133,
+      "mother": 94,
+      "father": 102,
+      "pos": [
+        11,
+        10
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 6,
+        "soc": 1,
+        "vit": 3
+      },
+      "generation": 53,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 45,
+      "type": "profession_chosen",
+      "pid": 119,
+      "profession": "Hunter"
+    },
+    {
+      "year": 45,
+      "type": "death",
+      "pid": 58,
+      "age": 48,
+      "profession": "Hunter",
+      "pos": [
+        20,
+        20
+      ],
+      "partner": 60
+    },
+    {
+      "year": 45,
+      "type": "death",
+      "pid": 68,
+      "age": 71,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        29
+      ],
+      "partner": 23
+    },
+    {
+      "year": 45,
+      "type": "pair_formed",
+      "a": 100,
+      "b": 116,
+      "cross_zone": false
+    },
+    {
+      "year": 45,
+      "type": "pair_formed",
+      "a": 110,
+      "b": 90,
+      "cross_zone": true
+    },
+    {
+      "year": 45,
+      "type": "pair_formed",
+      "a": 113,
+      "b": 117,
+      "cross_zone": true
+    },
+    {
+      "year": 45,
+      "type": "pair_formed",
+      "a": 108,
+      "b": 106,
+      "cross_zone": true
+    },
+    {
+      "year": 45,
+      "type": "birth",
+      "baby": 134,
+      "mother": 94,
+      "father": 102,
+      "pos": [
+        12,
+        11
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 2,
+        "soc": 1,
+        "vit": 3
+      },
+      "generation": 54,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 46,
+      "type": "profession_chosen",
+      "pid": 120,
+      "profession": "Merchant"
+    },
+    {
+      "year": 46,
+      "type": "profession_chosen",
+      "pid": 121,
+      "profession": "Merchant"
+    },
+    {
+      "year": 46,
+      "type": "death",
+      "pid": 10,
+      "age": 58,
+      "profession": "Merchant",
+      "pos": [
+        8,
+        30
+      ],
+      "partner": 82
+    },
+    {
+      "year": 46,
+      "type": "cohabitation",
+      "a": 97,
+      "b": 99,
+      "pos": [
+        10,
+        12
+      ]
+    },
+    {
+      "year": 46,
+      "type": "birth",
+      "baby": 135,
+      "mother": 86,
+      "father": 114,
+      "pos": [
+        12,
+        33
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 55,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 46,
+      "type": "marriage",
+      "a": 97,
+      "b": 99,
+      "pos": [
+        10,
+        12
+      ]
+    },
+    {
+      "year": 46,
+      "type": "birth",
+      "baby": 136,
+      "mother": 97,
+      "father": 99,
+      "pos": [
+        11,
+        12
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 56,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 47,
+      "type": "profession_chosen",
+      "pid": 122,
+      "profession": "Merchant"
+    },
+    {
+      "year": 47,
+      "type": "death",
+      "pid": 21,
+      "age": 50,
+      "profession": "Smith",
+      "pos": [
+        31,
+        10
+      ],
+      "partner": 3
+    },
+    {
+      "year": 47,
+      "type": "death",
+      "pid": 60,
+      "age": 52,
+      "profession": "Farmer",
+      "pos": [
+        13,
+        19
+      ],
+      "partner": null
+    },
+    {
+      "year": 47,
+      "type": "birth",
+      "baby": 137,
+      "mother": 88,
+      "father": 92,
+      "pos": [
+        10,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 9,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 57,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 47,
+      "type": "birth",
+      "baby": 138,
+      "mother": 97,
+      "father": 99,
+      "pos": [
+        10,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 58,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 48,
+      "type": "profession_chosen",
+      "pid": 123,
+      "profession": "Merchant"
+    },
+    {
+      "year": 48,
+      "type": "death",
+      "pid": 1,
+      "age": 50,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        8
+      ],
+      "partner": 18
+    },
+    {
+      "year": 48,
+      "type": "death",
+      "pid": 48,
+      "age": 91,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 48,
+      "type": "death",
+      "pid": 82,
+      "age": 46,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 48,
+      "type": "pair_formed",
+      "a": 119,
+      "b": 121,
+      "cross_zone": false
+    },
+    {
+      "year": 48,
+      "type": "birth",
+      "baby": 139,
+      "mother": 97,
+      "father": 99,
+      "pos": [
+        9,
+        12
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 59,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 49,
+      "type": "profession_chosen",
+      "pid": 124,
+      "profession": "Merchant"
+    },
+    {
+      "year": 49,
+      "type": "pair_formed",
+      "a": 115,
+      "b": 111,
+      "cross_zone": false
+    },
+    {
+      "year": 50,
+      "type": "profession_chosen",
+      "pid": 125,
+      "profession": "Merchant"
+    },
+    {
+      "year": 51,
+      "type": "profession_chosen",
+      "pid": 126,
+      "profession": "Merchant"
+    },
+    {
+      "year": 51,
+      "type": "pair_formed",
+      "a": 120,
+      "b": 118,
+      "cross_zone": true
+    },
+    {
+      "year": 51,
+      "type": "birth",
+      "baby": 140,
+      "mother": 97,
+      "father": 99,
+      "pos": [
+        9,
+        12
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 6,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 60,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 52,
+      "type": "profession_chosen",
+      "pid": 127,
+      "profession": "Merchant"
+    },
+    {
+      "year": 52,
+      "type": "pair_formed",
+      "a": 123,
+      "b": 125,
+      "cross_zone": true
+    },
+    {
+      "year": 53,
+      "type": "profession_chosen",
+      "pid": 128,
+      "profession": "Hunter"
+    },
+    {
+      "year": 54,
+      "type": "profession_chosen",
+      "pid": 129,
+      "profession": "Merchant"
+    },
+    {
+      "year": 54,
+      "type": "death",
+      "pid": 27,
+      "age": 100,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 54,
+      "type": "death",
+      "pid": 53,
+      "age": 81,
+      "profession": "Hunter",
+      "pos": [
+        31,
+        28
+      ],
+      "partner": 2
+    },
+    {
+      "year": 54,
+      "type": "cohabitation",
+      "a": 101,
+      "b": 107,
+      "pos": [
+        24,
+        29
+      ]
+    },
+    {
+      "year": 54,
+      "type": "marriage",
+      "a": 101,
+      "b": 107,
+      "pos": [
+        24,
+        29
+      ]
+    },
+    {
+      "year": 54,
+      "type": "birth",
+      "baby": 141,
+      "mother": 101,
+      "father": 107,
+      "pos": [
+        24,
+        30
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 5,
+        "soc": 2,
+        "vit": 5
+      },
+      "generation": 61,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 55,
+      "type": "profession_chosen",
+      "pid": 130,
+      "profession": "Merchant"
+    },
+    {
+      "year": 55,
+      "type": "death",
+      "pid": 52,
+      "age": 109,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 55,
+      "type": "pair_formed",
+      "a": 128,
+      "b": 126,
+      "cross_zone": false
+    },
+    {
+      "year": 55,
+      "type": "cohabitation",
+      "a": 28,
+      "b": 83,
+      "pos": [
+        30,
+        30
+      ]
+    },
+    {
+      "year": 55,
+      "type": "birth",
+      "baby": 142,
+      "mother": 101,
+      "father": 107,
+      "pos": [
+        25,
+        28
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 5,
+        "soc": 2,
+        "vit": 5
+      },
+      "generation": 62,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 56,
+      "type": "death",
+      "pid": 7,
+      "age": 104,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 56,
+      "type": "death",
+      "pid": 46,
+      "age": 105,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 56,
+      "type": "birth",
+      "baby": 143,
+      "mother": 101,
+      "father": 107,
+      "pos": [
+        25,
+        28
+      ],
+      "dna": {
+        "speed": 3,
+        "fert": 5,
+        "soc": 1,
+        "vit": 5
+      },
+      "generation": 63,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 58,
+      "type": "death",
+      "pid": 30,
+      "age": 108,
+      "profession": "Smith",
+      "pos": [
+        29,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 58,
+      "type": "pair_formed",
+      "a": 130,
+      "b": 124,
+      "cross_zone": false
+    },
+    {
+      "year": 59,
+      "type": "death",
+      "pid": 86,
+      "age": 55,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        33
+      ],
+      "partner": 114
+    },
+    {
+      "year": 59,
+      "type": "birth",
+      "baby": 144,
+      "mother": 101,
+      "father": 107,
+      "pos": [
+        24,
+        29
+      ],
+      "dna": {
+        "speed": 1,
+        "fert": 5,
+        "soc": 1,
+        "vit": 5
+      },
+      "generation": 64,
+      "culture_prof": "Hunter"
+    },
+    {
+      "year": 60,
+      "type": "profession_chosen",
+      "pid": 131,
+      "profession": "Hunter"
+    },
+    {
+      "year": 60,
+      "type": "profession_chosen",
+      "pid": 132,
+      "profession": "Merchant"
+    },
+    {
+      "year": 60,
+      "type": "profession_chosen",
+      "pid": 133,
+      "profession": "Farmer"
+    },
+    {
+      "year": 60,
+      "type": "death",
+      "pid": 42,
+      "age": 65,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        32
+      ],
+      "partner": 16
+    },
+    {
+      "year": 60,
+      "type": "death",
+      "pid": 130,
+      "age": 21,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        31
+      ],
+      "partner": 124
+    },
+    {
+      "year": 60,
+      "type": "pair_formed",
+      "a": 127,
+      "b": 114,
+      "cross_zone": false
+    },
+    {
+      "year": 61,
+      "type": "profession_chosen",
+      "pid": 134,
+      "profession": "Farmer"
+    },
+    {
+      "year": 61,
+      "type": "pair_formed",
+      "a": 129,
+      "b": 122,
+      "cross_zone": true
+    },
+    {
+      "year": 62,
+      "type": "profession_chosen",
+      "pid": 135,
+      "profession": "Merchant"
+    },
+    {
+      "year": 62,
+      "type": "profession_chosen",
+      "pid": 136,
+      "profession": "Farmer"
+    },
+    {
+      "year": 62,
+      "type": "death",
+      "pid": 38,
+      "age": 98,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        32
+      ],
+      "partner": 24
+    },
+    {
+      "year": 62,
+      "type": "death",
+      "pid": 56,
+      "age": 78,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        20
+      ],
+      "partner": 8
+    },
+    {
+      "year": 62,
+      "type": "pair_formed",
+      "a": 132,
+      "b": 124,
+      "cross_zone": false
+    },
+    {
+      "year": 63,
+      "type": "profession_chosen",
+      "pid": 137,
+      "profession": "Merchant"
+    },
+    {
+      "year": 63,
+      "type": "profession_chosen",
+      "pid": 138,
+      "profession": "Farmer"
+    },
+    {
+      "year": 63,
+      "type": "death",
+      "pid": 63,
+      "age": 75,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 63,
+      "type": "death",
+      "pid": 118,
+      "age": 35,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        6
+      ],
+      "partner": 120
+    },
+    {
+      "year": 64,
+      "type": "profession_chosen",
+      "pid": 139,
+      "profession": "Farmer"
+    },
+    {
+      "year": 64,
+      "type": "pair_formed",
+      "a": 136,
+      "b": 120,
+      "cross_zone": false
+    },
+    {
+      "year": 64,
+      "type": "pair_formed",
+      "a": 133,
+      "b": 134,
+      "cross_zone": false
+    },
+    {
+      "year": 64,
+      "type": "cohabitation",
+      "a": 133,
+      "b": 134,
+      "pos": [
+        11,
+        10
+      ]
+    },
+    {
+      "year": 64,
+      "type": "marriage",
+      "a": 133,
+      "b": 134,
+      "pos": [
+        11,
+        10
+      ]
+    },
+    {
+      "year": 64,
+      "type": "birth",
+      "baby": 145,
+      "mother": 133,
+      "father": 134,
+      "pos": [
+        11,
+        11
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 2,
+        "soc": 3,
+        "vit": 3
+      },
+      "generation": 65,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 65,
+      "type": "death",
+      "pid": 6,
+      "age": 70,
+      "profession": "Farmer",
+      "pos": [
+        30,
+        10
+      ],
+      "partner": 59
+    },
+    {
+      "year": 65,
+      "type": "pair_formed",
+      "a": 135,
+      "b": 137,
+      "cross_zone": false
+    },
+    {
+      "year": 65,
+      "type": "cohabitation",
+      "a": 135,
+      "b": 137,
+      "pos": [
+        10,
+        32
+      ]
+    },
+    {
+      "year": 65,
+      "type": "marriage",
+      "a": 135,
+      "b": 137,
+      "pos": [
+        10,
+        32
+      ]
+    },
+    {
+      "year": 65,
+      "type": "birth",
+      "baby": 146,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        10,
+        33
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 66,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 66,
+      "type": "death",
+      "pid": 13,
+      "age": 120,
+      "profession": "Hunter",
+      "pos": [
+        25,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 66,
+      "type": "death",
+      "pid": 112,
+      "age": 41,
+      "profession": "Smith",
+      "pos": [
+        30,
+        13
+      ],
+      "partner": 105
+    },
+    {
+      "year": 66,
+      "type": "pair_formed",
+      "a": 138,
+      "b": 139,
+      "cross_zone": false
+    },
+    {
+      "year": 67,
+      "type": "profession_chosen",
+      "pid": 140,
+      "profession": "Farmer"
+    },
+    {
+      "year": 67,
+      "type": "death",
+      "pid": 14,
+      "age": 100,
+      "profession": "Merchant",
+      "pos": [
+        21,
+        29
+      ],
+      "partner": 64
+    },
+    {
+      "year": 67,
+      "type": "death",
+      "pid": 49,
+      "age": 92,
+      "profession": "Farmer",
+      "pos": [
+        12,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 68,
+      "type": "death",
+      "pid": 119,
+      "age": 39,
+      "profession": "Hunter",
+      "pos": [
+        28,
+        29
+      ],
+      "partner": 121
+    },
+    {
+      "year": 68,
+      "type": "pair_formed",
+      "a": 131,
+      "b": 121,
+      "cross_zone": false
+    },
+    {
+      "year": 69,
+      "type": "death",
+      "pid": 45,
+      "age": 110,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 70,
+      "type": "profession_chosen",
+      "pid": 141,
+      "profession": "Hunter"
+    },
+    {
+      "year": 71,
+      "type": "profession_chosen",
+      "pid": 142,
+      "profession": "Hunter"
+    },
+    {
+      "year": 72,
+      "type": "profession_chosen",
+      "pid": 143,
+      "profession": "Hunter"
+    },
+    {
+      "year": 72,
+      "type": "death",
+      "pid": 94,
+      "age": 64,
+      "profession": "Farmer",
+      "pos": [
+        12,
+        10
+      ],
+      "partner": 102
+    },
+    {
+      "year": 72,
+      "type": "death",
+      "pid": 122,
+      "age": 41,
+      "profession": "Merchant",
+      "pos": [
+        27,
+        29
+      ],
+      "partner": 129
+    },
+    {
+      "year": 73,
+      "type": "death",
+      "pid": 18,
+      "age": 74,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        8
+      ],
+      "partner": null
+    },
+    {
+      "year": 73,
+      "type": "pair_formed",
+      "a": 142,
+      "b": 129,
+      "cross_zone": false
+    },
+    {
+      "year": 74,
+      "type": "death",
+      "pid": 74,
+      "age": 92,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        30
+      ],
+      "partner": 79
+    },
+    {
+      "year": 74,
+      "type": "pair_formed",
+      "a": 143,
+      "b": 141,
+      "cross_zone": false
+    },
+    {
+      "year": 74,
+      "type": "birth",
+      "baby": 147,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        9,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 9,
+        "soc": 4,
+        "vit": 4
+      },
+      "generation": 67,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 75,
+      "type": "profession_chosen",
+      "pid": 144,
+      "profession": "Hunter"
+    },
+    {
+      "year": 75,
+      "type": "death",
+      "pid": 16,
+      "age": 82,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 76,
+      "type": "death",
+      "pid": 37,
+      "age": 89,
+      "profession": "Smith",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": 62
+    },
+    {
+      "year": 76,
+      "type": "death",
+      "pid": 90,
+      "age": 71,
+      "profession": "Merchant",
+      "pos": [
+        14,
+        30
+      ],
+      "partner": 110
+    },
+    {
+      "year": 76,
+      "type": "birth",
+      "baby": 148,
+      "mother": 133,
+      "father": 134,
+      "pos": [
+        11,
+        9
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 6,
+        "soc": 3,
+        "vit": 3
+      },
+      "generation": 68,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 77,
+      "type": "death",
+      "pid": 8,
+      "age": 95,
+      "profession": "Smith",
+      "pos": [
+        31,
+        11
+      ],
+      "partner": null
+    },
+    {
+      "year": 77,
+      "type": "death",
+      "pid": 70,
+      "age": 103,
+      "profession": "Merchant",
+      "pos": [
+        13,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 78,
+      "type": "death",
+      "pid": 19,
+      "age": 128,
+      "profession": "Merchant",
+      "pos": [
+        13,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 78,
+      "type": "death",
+      "pid": 44,
+      "age": 114,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        20
+      ],
+      "partner": 32
+    },
+    {
+      "year": 78,
+      "type": "cohabitation",
+      "a": 123,
+      "b": 125,
+      "pos": [
+        14,
+        30
+      ]
+    },
+    {
+      "year": 79,
+      "type": "death",
+      "pid": 109,
+      "age": 55,
+      "profession": "Farmer",
+      "pos": [
+        13,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 80,
+      "type": "profession_chosen",
+      "pid": 145,
+      "profession": "Hunter"
+    },
+    {
+      "year": 80,
+      "type": "cohabitation",
+      "a": 138,
+      "b": 139,
+      "pos": [
+        10,
+        13
+      ]
+    },
+    {
+      "year": 80,
+      "type": "birth",
+      "baby": 149,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        9,
+        31
+      ],
+      "dna": {
+        "speed": 6,
+        "fert": 2,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 69,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 81,
+      "type": "profession_chosen",
+      "pid": 146,
+      "profession": "Merchant"
+    },
+    {
+      "year": 81,
+      "type": "marriage",
+      "a": 138,
+      "b": 139,
+      "pos": [
+        10,
+        13
+      ]
+    },
+    {
+      "year": 81,
+      "type": "birth",
+      "baby": 150,
+      "mother": 138,
+      "father": 139,
+      "pos": [
+        10,
+        14
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 70,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 82,
+      "type": "death",
+      "pid": 149,
+      "age": 2,
+      "profession": null,
+      "pos": [
+        9,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 82,
+      "type": "pair_formed",
+      "a": 140,
+      "b": 145,
+      "cross_zone": false
+    },
+    {
+      "year": 82,
+      "type": "birth",
+      "baby": 151,
+      "mother": 133,
+      "father": 134,
+      "pos": [
+        11,
+        11
+      ],
+      "dna": {
+        "speed": 4,
+        "fert": 2,
+        "soc": 1,
+        "vit": 5
+      },
+      "generation": 71,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 83,
+      "type": "death",
+      "pid": 51,
+      "age": 135,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 83,
+      "type": "death",
+      "pid": 71,
+      "age": 106,
+      "profession": "Hunter",
+      "pos": [
+        27,
+        31
+      ],
+      "partner": 43
+    },
+    {
+      "year": 83,
+      "type": "death",
+      "pid": 100,
+      "age": 65,
+      "profession": "Hunter",
+      "pos": [
+        33,
+        30
+      ],
+      "partner": 116
+    },
+    {
+      "year": 83,
+      "type": "death",
+      "pid": 134,
+      "age": 38,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": 133
+    },
+    {
+      "year": 83,
+      "type": "birth",
+      "baby": 152,
+      "mother": 138,
+      "father": 139,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 72,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 84,
+      "type": "death",
+      "pid": 95,
+      "age": 76,
+      "profession": "Merchant",
+      "pos": [
+        13,
+        30
+      ],
+      "partner": 96
+    },
+    {
+      "year": 84,
+      "type": "birth",
+      "baby": 153,
+      "mother": 138,
+      "father": 139,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 3,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 73,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 85,
+      "type": "death",
+      "pid": 69,
+      "age": 127,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 85,
+      "type": "death",
+      "pid": 92,
+      "age": 78,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        31
+      ],
+      "partner": 88
+    },
+    {
+      "year": 85,
+      "type": "death",
+      "pid": 113,
+      "age": 60,
+      "profession": "Merchant",
+      "pos": [
+        32,
+        30
+      ],
+      "partner": 117
+    },
+    {
+      "year": 85,
+      "type": "death",
+      "pid": 127,
+      "age": 49,
+      "profession": "Merchant",
+      "pos": [
+        14,
+        29
+      ],
+      "partner": 114
+    },
+    {
+      "year": 85,
+      "type": "birth",
+      "baby": 154,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        9,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 2,
+        "vit": 4
+      },
+      "generation": 74,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 86,
+      "type": "death",
+      "pid": 54,
+      "age": 119,
+      "profession": "Hunter",
+      "pos": [
+        28,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 86,
+      "type": "death",
+      "pid": 88,
+      "age": 81,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 86,
+      "type": "birth",
+      "baby": 155,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        10,
+        32
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 75,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 87,
+      "type": "death",
+      "pid": 98,
+      "age": 73,
+      "profession": "Farmer",
+      "pos": [
+        13,
+        10
+      ],
+      "partner": 104
+    },
+    {
+      "year": 87,
+      "type": "birth",
+      "baby": 156,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        9,
+        31
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 2,
+        "soc": 4,
+        "vit": 5
+      },
+      "generation": 76,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 88,
+      "type": "death",
+      "pid": 2,
+      "age": 110,
+      "profession": "Smith",
+      "pos": [
+        30,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 88,
+      "type": "birth",
+      "baby": 157,
+      "mother": 135,
+      "father": 137,
+      "pos": [
+        10,
+        30
+      ],
+      "dna": {
+        "speed": 8,
+        "fert": 9,
+        "soc": 6,
+        "vit": 5
+      },
+      "generation": 77,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 88,
+      "type": "birth",
+      "baby": 158,
+      "mother": 138,
+      "father": 139,
+      "pos": [
+        11,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 1
+      },
+      "generation": 78,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 89,
+      "type": "death",
+      "pid": 3,
+      "age": 91,
+      "profession": "Smith",
+      "pos": [
+        31,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 89,
+      "type": "death",
+      "pid": 104,
+      "age": 67,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        26
+      ],
+      "partner": null
+    },
+    {
+      "year": 89,
+      "type": "death",
+      "pid": 125,
+      "age": 55,
+      "profession": "Merchant",
+      "pos": [
+        13,
+        30
+      ],
+      "partner": 123
+    },
+    {
+      "year": 89,
+      "type": "birth",
+      "baby": 159,
+      "mother": 138,
+      "father": 139,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 79,
+      "culture_prof": "Merchant"
+    },
+    {
+      "year": 90,
+      "type": "profession_chosen",
+      "pid": 147,
+      "profession": "Merchant"
+    },
+    {
+      "year": 90,
+      "type": "death",
+      "pid": 34,
+      "age": 135,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        27
+      ],
+      "partner": null
+    },
+    {
+      "year": 91,
+      "type": "death",
+      "pid": 32,
+      "age": 107,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        27
+      ],
+      "partner": null
+    },
+    {
+      "year": 91,
+      "type": "death",
+      "pid": 114,
+      "age": 66,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        32
+      ],
+      "partner": null
+    },
+    {
+      "year": 92,
+      "type": "profession_chosen",
+      "pid": 148,
+      "profession": "Farmer"
+    },
+    {
+      "year": 92,
+      "type": "death",
+      "pid": 5,
+      "age": 108,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        12
+      ],
+      "partner": 26
+    },
+    {
+      "year": 92,
+      "type": "pair_formed",
+      "a": 147,
+      "b": 146,
+      "cross_zone": false
+    },
+    {
+      "year": 93,
+      "type": "death",
+      "pid": 26,
+      "age": 113,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        12
+      ],
+      "partner": null
+    },
+    {
+      "year": 93,
+      "type": "death",
+      "pid": 97,
+      "age": 80,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        12
+      ],
+      "partner": 99
+    },
+    {
+      "year": 94,
+      "type": "death",
+      "pid": 55,
+      "age": 133,
+      "profession": "Smith",
+      "pos": [
+        30,
+        11
+      ],
+      "partner": 72
+    },
+    {
+      "year": 97,
+      "type": "profession_chosen",
+      "pid": 150,
+      "profession": "Farmer"
+    },
+    {
+      "year": 98,
+      "type": "profession_chosen",
+      "pid": 151,
+      "profession": "Farmer"
+    },
+    {
+      "year": 98,
+      "type": "death",
+      "pid": 33,
+      "age": 112,
+      "profession": "Hunter",
+      "pos": [
+        28,
+        30
+      ],
+      "partner": 77
+    },
+    {
+      "year": 98,
+      "type": "death",
+      "pid": 139,
+      "age": 50,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        12
+      ],
+      "partner": 138
+    },
+    {
+      "year": 99,
+      "type": "profession_chosen",
+      "pid": 152,
+      "profession": "Farmer"
+    },
+    {
+      "year": 99,
+      "type": "death",
+      "pid": 124,
+      "age": 66,
+      "profession": "Merchant",
+      "pos": [
+        13,
+        29
+      ],
+      "partner": 132
+    },
+    {
+      "year": 100,
+      "type": "profession_chosen",
+      "pid": 153,
+      "profession": "Farmer"
+    },
+    {
+      "year": 100,
+      "type": "death",
+      "pid": 110,
+      "age": 76,
+      "profession": "Merchant",
+      "pos": [
+        27,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 100,
+      "type": "pair_formed",
+      "a": 148,
+      "b": 151,
+      "cross_zone": false
+    },
+    {
+      "year": 101,
+      "type": "profession_chosen",
+      "pid": 154,
+      "profession": "Merchant"
+    },
+    {
+      "year": 101,
+      "type": "death",
+      "pid": 152,
+      "age": 18,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        13
+      ],
+      "partner": null
+    },
+    {
+      "year": 102,
+      "type": "profession_chosen",
+      "pid": 155,
+      "profession": "Merchant"
+    },
+    {
+      "year": 102,
+      "type": "pair_formed",
+      "a": 150,
+      "b": 153,
+      "cross_zone": false
+    },
+    {
+      "year": 103,
+      "type": "profession_chosen",
+      "pid": 156,
+      "profession": "Merchant"
+    },
+    {
+      "year": 103,
+      "type": "death",
+      "pid": 89,
+      "age": 98,
+      "profession": "Merchant",
+      "pos": [
+        26,
+        29
+      ],
+      "partner": 87
+    },
+    {
+      "year": 104,
+      "type": "profession_chosen",
+      "pid": 157,
+      "profession": "Merchant"
+    },
+    {
+      "year": 104,
+      "type": "profession_chosen",
+      "pid": 158,
+      "profession": "Farmer"
+    },
+    {
+      "year": 104,
+      "type": "pair_formed",
+      "a": 155,
+      "b": 154,
+      "cross_zone": false
+    },
+    {
+      "year": 104,
+      "type": "cohabitation",
+      "a": 141,
+      "b": 143,
+      "pos": [
+        27,
+        30
+      ]
+    },
+    {
+      "year": 105,
+      "type": "profession_chosen",
+      "pid": 159,
+      "profession": "Farmer"
+    },
+    {
+      "year": 105,
+      "type": "death",
+      "pid": 133,
+      "age": 61,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 107,
+      "type": "death",
+      "pid": 23,
+      "age": 139,
+      "profession": "Hunter",
+      "pos": [
+        28,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 107,
+      "type": "death",
+      "pid": 24,
+      "age": 126,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 107,
+      "type": "death",
+      "pid": 121,
+      "age": 77,
+      "profession": "Merchant",
+      "pos": [
+        14,
+        30
+      ],
+      "partner": 131
+    },
+    {
+      "year": 107,
+      "type": "pair_formed",
+      "a": 158,
+      "b": 159,
+      "cross_zone": false
+    },
+    {
+      "year": 107,
+      "type": "pair_formed",
+      "a": 156,
+      "b": 157,
+      "cross_zone": false
+    },
+    {
+      "year": 108,
+      "type": "cohabitation",
+      "a": 158,
+      "b": 159,
+      "pos": [
+        10,
+        13
+      ]
+    },
+    {
+      "year": 109,
+      "type": "marriage",
+      "a": 158,
+      "b": 159,
+      "pos": [
+        10,
+        13
+      ]
+    },
+    {
+      "year": 109,
+      "type": "birth",
+      "baby": 160,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        10,
+        14
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 80,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 110,
+      "type": "death",
+      "pid": 43,
+      "age": 117,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 110,
+      "type": "death",
+      "pid": 126,
+      "age": 75,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        33
+      ],
+      "partner": 128
+    },
+    {
+      "year": 110,
+      "type": "cohabitation",
+      "a": 111,
+      "b": 115,
+      "pos": [
+        11,
+        29
+      ]
+    },
+    {
+      "year": 111,
+      "type": "death",
+      "pid": 50,
+      "age": 162,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 111,
+      "type": "birth",
+      "baby": 161,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        11,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 1
+      },
+      "generation": 81,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 112,
+      "type": "birth",
+      "baby": 162,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 82,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 113,
+      "type": "birth",
+      "baby": 163,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        11,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 7,
+        "vit": 3
+      },
+      "generation": 83,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 114,
+      "type": "birth",
+      "baby": 164,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 1
+      },
+      "generation": 84,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 115,
+      "type": "death",
+      "pid": 40,
+      "age": 119,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        29
+      ],
+      "partner": 76
+    },
+    {
+      "year": 115,
+      "type": "death",
+      "pid": 135,
+      "age": 69,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        31
+      ],
+      "partner": 137
+    },
+    {
+      "year": 117,
+      "type": "death",
+      "pid": 128,
+      "age": 80,
+      "profession": "Hunter",
+      "pos": [
+        29,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 117,
+      "type": "death",
+      "pid": 143,
+      "age": 61,
+      "profession": "Hunter",
+      "pos": [
+        27,
+        30
+      ],
+      "partner": 141
+    },
+    {
+      "year": 119,
+      "type": "birth",
+      "baby": 165,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        9,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 10,
+        "vit": 3
+      },
+      "generation": 85,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 120,
+      "type": "death",
+      "pid": 9,
+      "age": 175,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        8
+      ],
+      "partner": null
+    },
+    {
+      "year": 120,
+      "type": "death",
+      "pid": 129,
+      "age": 82,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        32
+      ],
+      "partner": 142
+    },
+    {
+      "year": 120,
+      "type": "birth",
+      "baby": 166,
+      "mother": 158,
+      "father": 159,
+      "pos": [
+        11,
+        13
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 86,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 121,
+      "type": "death",
+      "pid": 77,
+      "age": 156,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 121,
+      "type": "death",
+      "pid": 99,
+      "age": 106,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 121,
+      "type": "cohabitation",
+      "a": 120,
+      "b": 136,
+      "pos": [
+        10,
+        10
+      ]
+    },
+    {
+      "year": 122,
+      "type": "death",
+      "pid": 142,
+      "age": 67,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 123,
+      "type": "death",
+      "pid": 102,
+      "age": 102,
+      "profession": "Farmer",
+      "pos": [
+        12,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 125,
+      "type": "profession_chosen",
+      "pid": 160,
+      "profession": "Farmer"
+    },
+    {
+      "year": 125,
+      "type": "death",
+      "pid": 79,
+      "age": 157,
+      "profession": "Hunter",
+      "pos": [
+        31,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 125,
+      "type": "death",
+      "pid": 87,
+      "age": 121,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 125,
+      "type": "death",
+      "pid": 136,
+      "age": 79,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": 120
+    },
+    {
+      "year": 127,
+      "type": "profession_chosen",
+      "pid": 161,
+      "profession": "Farmer"
+    },
+    {
+      "year": 127,
+      "type": "death",
+      "pid": 96,
+      "age": 118,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 127,
+      "type": "death",
+      "pid": 145,
+      "age": 63,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        32
+      ],
+      "partner": 140
+    },
+    {
+      "year": 128,
+      "type": "profession_chosen",
+      "pid": 162,
+      "profession": "Farmer"
+    },
+    {
+      "year": 128,
+      "type": "death",
+      "pid": 140,
+      "age": 77,
+      "profession": "Farmer",
+      "pos": [
+        8,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 129,
+      "type": "profession_chosen",
+      "pid": 163,
+      "profession": "Farmer"
+    },
+    {
+      "year": 129,
+      "type": "death",
+      "pid": 131,
+      "age": 85,
+      "profession": "Hunter",
+      "pos": [
+        29,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 129,
+      "type": "death",
+      "pid": 144,
+      "age": 70,
+      "profession": "Hunter",
+      "pos": [
+        29,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 129,
+      "type": "pair_formed",
+      "a": 161,
+      "b": 160,
+      "cross_zone": false
+    },
+    {
+      "year": 130,
+      "type": "profession_chosen",
+      "pid": 164,
+      "profession": "Farmer"
+    },
+    {
+      "year": 131,
+      "type": "pair_formed",
+      "a": 162,
+      "b": 163,
+      "cross_zone": false
+    },
+    {
+      "year": 133,
+      "type": "death",
+      "pid": 64,
+      "age": 163,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 135,
+      "type": "profession_chosen",
+      "pid": 165,
+      "profession": "Farmer"
+    },
+    {
+      "year": 136,
+      "type": "profession_chosen",
+      "pid": 166,
+      "profession": "Farmer"
+    },
+    {
+      "year": 136,
+      "type": "death",
+      "pid": 146,
+      "age": 71,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        31
+      ],
+      "partner": 147
+    },
+    {
+      "year": 137,
+      "type": "death",
+      "pid": 120,
+      "age": 107,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 137,
+      "type": "pair_formed",
+      "a": 164,
+      "b": 165,
+      "cross_zone": false
+    },
+    {
+      "year": 137,
+      "type": "cohabitation",
+      "a": 164,
+      "b": 165,
+      "pos": [
+        9,
+        11
+      ]
+    },
+    {
+      "year": 137,
+      "type": "marriage",
+      "a": 164,
+      "b": 165,
+      "pos": [
+        9,
+        11
+      ]
+    },
+    {
+      "year": 137,
+      "type": "birth",
+      "baby": 167,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        9,
+        12
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 1
+      },
+      "generation": 87,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 138,
+      "type": "death",
+      "pid": 116,
+      "age": 112,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 138,
+      "type": "birth",
+      "baby": 168,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        8,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 88,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 139,
+      "type": "death",
+      "pid": 106,
+      "age": 116,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": 108
+    },
+    {
+      "year": 139,
+      "type": "death",
+      "pid": 111,
+      "age": 114,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": 115
+    },
+    {
+      "year": 139,
+      "type": "cohabitation",
+      "a": 148,
+      "b": 151,
+      "pos": [
+        10,
+        10
+      ]
+    },
+    {
+      "year": 139,
+      "type": "birth",
+      "baby": 169,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        10,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 10,
+        "vit": 1
+      },
+      "generation": 89,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 140,
+      "type": "death",
+      "pid": 101,
+      "age": 121,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        30
+      ],
+      "partner": 107
+    },
+    {
+      "year": 141,
+      "type": "death",
+      "pid": 62,
+      "age": 155,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        8
+      ],
+      "partner": null
+    },
+    {
+      "year": 141,
+      "type": "birth",
+      "baby": 170,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        8,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 3,
+        "soc": 10,
+        "vit": 1
+      },
+      "generation": 90,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 142,
+      "type": "death",
+      "pid": 105,
+      "age": 120,
+      "profession": "Hunter",
+      "pos": [
+        31,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 143,
+      "type": "death",
+      "pid": 141,
+      "age": 89,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 145,
+      "type": "death",
+      "pid": 76,
+      "age": 148,
+      "profession": "Smith",
+      "pos": [
+        30,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 145,
+      "type": "cohabitation",
+      "a": 150,
+      "b": 153,
+      "pos": [
+        10,
+        9
+      ]
+    },
+    {
+      "year": 146,
+      "type": "death",
+      "pid": 91,
+      "age": 140,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        30
+      ],
+      "partner": 81
+    },
+    {
+      "year": 146,
+      "type": "death",
+      "pid": 156,
+      "age": 59,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        32
+      ],
+      "partner": 157
+    },
+    {
+      "year": 147,
+      "type": "death",
+      "pid": 138,
+      "age": 100,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        12
+      ],
+      "partner": null
+    },
+    {
+      "year": 147,
+      "type": "birth",
+      "baby": 171,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        8,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 9,
+        "vit": 3
+      },
+      "generation": 91,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 150,
+      "type": "death",
+      "pid": 72,
+      "age": 181,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 151,
+      "type": "death",
+      "pid": 107,
+      "age": 128,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 151,
+      "type": "death",
+      "pid": 137,
+      "age": 104,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        32
+      ],
+      "partner": null
+    },
+    {
+      "year": 152,
+      "type": "birth",
+      "baby": 172,
+      "mother": 164,
+      "father": 165,
+      "pos": [
+        8,
+        11
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 1,
+        "soc": 10,
+        "vit": 1
+      },
+      "generation": 92,
+      "culture_prof": "Farmer"
+    },
+    {
+      "year": 153,
+      "type": "profession_chosen",
+      "pid": 167,
+      "profession": "Farmer"
+    },
+    {
+      "year": 153,
+      "type": "death",
+      "pid": 155,
+      "age": 67,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        31
+      ],
+      "partner": 154
+    },
+    {
+      "year": 154,
+      "type": "profession_chosen",
+      "pid": 168,
+      "profession": "Farmer"
+    },
+    {
+      "year": 154,
+      "type": "death",
+      "pid": 147,
+      "age": 80,
+      "profession": "Merchant",
+      "pos": [
+        9,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 155,
+      "type": "profession_chosen",
+      "pid": 169,
+      "profession": "Farmer"
+    },
+    {
+      "year": 155,
+      "type": "death",
+      "pid": 115,
+      "age": 129,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 155,
+      "type": "death",
+      "pid": 151,
+      "age": 73,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": 148
+    },
+    {
+      "year": 155,
+      "type": "death",
+      "pid": 168,
+      "age": 17,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        13
+      ],
+      "partner": null
+    },
+    {
+      "year": 155,
+      "type": "pair_formed",
+      "a": 167,
+      "b": 166,
+      "cross_zone": false
+    },
+    {
+      "year": 156,
+      "type": "death",
+      "pid": 108,
+      "age": 132,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 157,
+      "type": "profession_chosen",
+      "pid": 170,
+      "profession": "Farmer"
+    },
+    {
+      "year": 159,
+      "type": "pair_formed",
+      "a": 170,
+      "b": 169,
+      "cross_zone": false
+    },
+    {
+      "year": 163,
+      "type": "profession_chosen",
+      "pid": 171,
+      "profession": "Merchant"
+    },
+    {
+      "year": 168,
+      "type": "profession_chosen",
+      "pid": 172,
+      "profession": "Farmer"
+    },
+    {
+      "year": 170,
+      "type": "pair_formed",
+      "a": 172,
+      "b": 171,
+      "cross_zone": false
+    },
+    {
+      "year": 172,
+      "type": "death",
+      "pid": 25,
+      "age": 213,
+      "profession": "Hunter",
+      "pos": [
+        30,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 172,
+      "type": "death",
+      "pid": 123,
+      "age": 140,
+      "profession": "Merchant",
+      "pos": [
+        12,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 172,
+      "type": "death",
+      "pid": 154,
+      "age": 87,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        28
+      ],
+      "partner": null
+    },
+    {
+      "year": 177,
+      "type": "death",
+      "pid": 117,
+      "age": 151,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        29
+      ],
+      "partner": null
+    },
+    {
+      "year": 177,
+      "type": "death",
+      "pid": 159,
+      "age": 88,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        13
+      ],
+      "partner": 158
+    },
+    {
+      "year": 178,
+      "type": "death",
+      "pid": 172,
+      "age": 26,
+      "profession": "Farmer",
+      "pos": [
+        8,
+        10
+      ],
+      "partner": 171
+    },
+    {
+      "year": 179,
+      "type": "death",
+      "pid": 163,
+      "age": 66,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": 162
+    },
+    {
+      "year": 181,
+      "type": "death",
+      "pid": 161,
+      "age": 70,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        9
+      ],
+      "partner": 160
+    },
+    {
+      "year": 185,
+      "type": "death",
+      "pid": 160,
+      "age": 76,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        12
+      ],
+      "partner": null
+    },
+    {
+      "year": 188,
+      "type": "death",
+      "pid": 28,
+      "age": 192,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        29
+      ],
+      "partner": 83
+    },
+    {
+      "year": 188,
+      "type": "death",
+      "pid": 164,
+      "age": 74,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        10
+      ],
+      "partner": 165
+    },
+    {
+      "year": 193,
+      "type": "death",
+      "pid": 132,
+      "age": 149,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 193,
+      "type": "death",
+      "pid": 153,
+      "age": 109,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        9
+      ],
+      "partner": 150
+    },
+    {
+      "year": 198,
+      "type": "death",
+      "pid": 150,
+      "age": 117,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 204,
+      "type": "death",
+      "pid": 83,
+      "age": 202,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 205,
+      "type": "death",
+      "pid": 148,
+      "age": 129,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 210,
+      "type": "cohabitation",
+      "a": 169,
+      "b": 170,
+      "pos": [
+        8,
+        11
+      ]
+    },
+    {
+      "year": 211,
+      "type": "death",
+      "pid": 157,
+      "age": 123,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        31
+      ],
+      "partner": null
+    },
+    {
+      "year": 215,
+      "type": "death",
+      "pid": 166,
+      "age": 95,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": 167
+    },
+    {
+      "year": 220,
+      "type": "death",
+      "pid": 61,
+      "age": 267,
+      "profession": "Smith",
+      "pos": [
+        30,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 221,
+      "type": "death",
+      "pid": 169,
+      "age": 82,
+      "profession": "Farmer",
+      "pos": [
+        9,
+        10
+      ],
+      "partner": 170
+    },
+    {
+      "year": 222,
+      "type": "death",
+      "pid": 162,
+      "age": 110,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 224,
+      "type": "death",
+      "pid": 171,
+      "age": 77,
+      "profession": "Merchant",
+      "pos": [
+        11,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 225,
+      "type": "death",
+      "pid": 167,
+      "age": 88,
+      "profession": "Farmer",
+      "pos": [
+        11,
+        10
+      ],
+      "partner": null
+    },
+    {
+      "year": 226,
+      "type": "death",
+      "pid": 81,
+      "age": 225,
+      "profession": "Merchant",
+      "pos": [
+        10,
+        30
+      ],
+      "partner": null
+    },
+    {
+      "year": 227,
+      "type": "death",
+      "pid": 165,
+      "age": 108,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        9
+      ],
+      "partner": null
+    },
+    {
+      "year": 257,
+      "type": "death",
+      "pid": 158,
+      "age": 169,
+      "profession": "Farmer",
+      "pos": [
+        10,
+        9
+      ],
+      "partner": null
+    }
+  ],
+  "final_people": [
+    {
+      "pid": 59,
+      "age": 272,
+      "born_year": 0,
+      "died_year": null,
+      "mother": null,
+      "father": null,
+      "profession": "Farmer",
+      "partner": null,
+      "cohabiting": false,
+      "married": true,
+      "kids_count": 3,
+      "pos": [
+        10,
+        10
+      ],
+      "dna": {
+        "speed": 6,
+        "fert": 10,
+        "soc": 4,
+        "vit": 10
+      },
+      "years_single": 0,
+      "culture_prof": "Smith"
+    },
+    {
+      "pid": 170,
+      "age": 122,
+      "born_year": 141,
+      "died_year": null,
+      "mother": 164,
+      "father": 165,
+      "profession": "Farmer",
+      "partner": null,
+      "cohabiting": false,
+      "married": false,
+      "kids_count": 0,
+      "pos": [
+        9,
+        10
+      ],
+      "dna": {
+        "speed": 10,
+        "fert": 3,
+        "soc": 10,
+        "vit": 1
+      },
+      "years_single": 0,
+      "culture_prof": "Farmer"
+    }
+  ]
+}
