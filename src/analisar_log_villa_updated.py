@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import math
+from statistics import mean, median
 from dataclasses import dataclass, field
 from collections import defaultdict, Counter
 from typing import Any, Dict, List, Optional, Tuple, Iterable
@@ -98,7 +100,7 @@ def get_person_id(d: Dict[str, Any]) -> Optional[int]:
                 return int(d[k])
             except Exception:
                 pass
-
+    return None
 
 
 def get_parents(d: Dict[str, Any]) -> Tuple[Optional[int], Optional[int]]:
@@ -174,7 +176,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
             # teu birth: {"baby": id, "mother": id, "father": id, "pos":[x,y]}
             baby = d.get("baby")
             if baby is None:
-                # fallback genérico
                 baby = get_person_id(d)
             if baby is None:
                 continue
@@ -193,7 +194,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
                 dad = get_or_create(people, f)
                 dad.children.add(child_id)
 
-            # se quiser registrar posição de nascimento como "posição naquele ano"
             pos = get_position(d)
             if pos is not None:
                 child.positions_by_year[y] = pos
@@ -209,17 +209,17 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
             a, b = get_partner_pair(d)
             if a is None or b is None:
                 continue
-            pa = get_or_create(people, a)
-            pb = get_or_create(people, b)
-            pa.partners.add(b)
-            pb.partners.add(a)
+            pa = get_or_create(people, int(a))
+            pb = get_or_create(people, int(b))
+            pa.partners.add(int(b))
+            pb.partners.add(int(a))
 
         elif et == "profession_chosen":
             pid = get_person_id(d)
             prof = get_profession(d)
             if pid is None or prof is None:
                 continue
-            p = get_or_create(people, pid)
+            p = get_or_create(people, int(pid))
             p.professions_by_year[y] = str(prof)
             p.final_profession = str(prof)
 
@@ -228,11 +228,8 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
             pos = get_position(d)
             if pid is None or pos is None:
                 continue
-            p = get_or_create(people, pid)
+            p = get_or_create(people, int(pid))
             p.positions_by_year[y] = pos
-
-        else:
-            pass
 
     # Finaliza profissão final se tiver histórico mas não tiver final
     for p in people.values():
@@ -240,10 +237,7 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
             last_y = max(p.professions_by_year.keys())
             p.final_profession = p.professions_by_year[last_y]
 
-
     # --- Enriquecimento com final_people (se existir) ---
-    # O log de eventos nem sempre carrega DNA/kids_count/born_year de todo mundo (ex: população inicial).
-    # Se o JSON tiver "final_people", usamos como fonte de verdade para esses campos finais.
     final_list = doc.get("final_people")
     if isinstance(final_list, list):
         for fp in final_list:
@@ -270,7 +264,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
                 except Exception:
                     pass
 
-            # pais
             m = fp.get("mother", fp.get("mother_id"))
             f = fp.get("father", fp.get("father_id"))
             try:
@@ -282,7 +275,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
             except Exception:
                 pass
 
-            # profissão/estado final
             prof = fp.get("profession")
             if prof is not None:
                 p.final_profession = str(prof)
@@ -303,7 +295,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
 
             dna = fp.get("dna")
             if isinstance(dna, dict):
-                # normaliza para int quando possível
                 out = {}
                 for k, v in dna.items():
                     try:
@@ -312,7 +303,6 @@ def build_people_index(doc: Dict[str, Any]) -> Tuple[Dict[int, Person], Dict[str
                         continue
                 p.dna = out
 
-            # posição final (se existir)
             pos = fp.get("pos")
             if isinstance(pos, list) and len(pos) == 2:
                 try:
@@ -427,7 +417,6 @@ def descendants_of_couple(
     if mother not in people or father not in people:
         return set()
 
-    # filhos em comum
     start = people[mother].children & people[father].children
     if not start:
         return set()
@@ -468,7 +457,6 @@ def family_lineages(people: Dict[int, Person], last_year: int) -> Dict[str, Any]
     extinct = 0
     alive = 0
 
-    # todos os casais que aparecem como pais
     couples = set()
     for p in people.values():
         if p.mother_id is not None and p.father_id is not None:
@@ -512,7 +500,7 @@ def family_lineages(people: Dict[int, Person], last_year: int) -> Dict[str, Any]
 
         results.append({
             "family_key": (mother, father),
-            "members_total_ever": len(members),      # 👈 total histórico (desde o início)
+            "members_total_ever": len(members),
             "born_count": len(born_years),
             "start_year": start_year,
             "last_alive_year": last_alive_year,
@@ -544,44 +532,32 @@ def family_lineages(people: Dict[int, Person], last_year: int) -> Dict[str, Any]
     }
 
 
-
 # =========================
 # 3.5) SÉRIES TEMPORAIS + GRÁFICOS
 # =========================
 
 def build_yearly_state_series(doc: Dict[str, Any], people: Dict[int, Person], meta: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Reconstrói estado ano-a-ano a partir dos eventos (e, quando existir, final_people).
-    Importante: não existe "divórcio" no modelo atual, então:
-      - parceria pode acabar só por morte
-      - pode haver novo par após viuvez (a reconstrução abaixo suporta)
-    """
     events = list(iter_events(doc))
     first_year = int(meta.get("first_year") or 0)
     last_year = int(meta.get("last_year") or 0)
 
-    # agrupa eventos por ano, mantendo ordem original (porque a vida não tem rollback)
     by_year: Dict[int, List[Dict[str, Any]]] = defaultdict(list)
     for ev in events:
         y = ev_year(ev)
         by_year[y].append(ev)
 
-    # born_year vindo do índice (já enriquecido com final_people)
     born_year: Dict[int, int] = {}
     for pid, p in people.items():
         if p.born_year is not None:
             born_year[pid] = int(p.born_year)
 
-    # estado dinâmico
     alive: Dict[int, bool] = {pid: True for pid in born_year.keys()}
     partner: Dict[int, Optional[int]] = {pid: None for pid in born_year.keys()}
 
-    # aplica mortos antes do início (caso exista)
     for pid, p in people.items():
         if p.died_year is not None and p.died_year <= first_year:
             alive[pid] = False
 
-    # séries
     years = list(range(first_year, last_year + 1))
     alive_by_year = []
     singles_by_year = []
@@ -590,7 +566,6 @@ def build_yearly_state_series(doc: Dict[str, Any], people: Dict[int, Person], me
     cross_pairs_rate_by_year = []
     avg_first_marriage_age_by_year = []
 
-    # primeiro casamento por pessoa
     first_marriage_year: Dict[int, int] = {}
 
     for y in years:
@@ -799,7 +774,371 @@ def plot_new_metrics(doc: Dict[str, Any], people: Dict[int, Person], meta: Dict[
             plt.ylabel("Filhos (kids_count)")
             plt.grid(True)
 
+    # ===== Extras (idade fértil, DNA no tempo, profissões e fitness) =====
+    try:
+        plot_births_by_age_bins(doc, people, meta)
+        plot_genes_by_birth_cohort(people, meta)
+        plot_profession_chosen_per_year(doc, meta)
+        plot_dna_by_profession(people)
+        plot_fitness_by_profession(people, meta)
+    except Exception as ex:
+        print("[AVISO] Falhou ao gerar gráficos extras:", ex)
+
     plt.show()
+
+
+
+# =========================
+# 3.7) EXTRAS: NATALIDADE POR FAIXA ETÁRIA + DNA NO TEMPO + PROFISSÕES + FITNESS
+# =========================
+
+def _age_bin(age: int, bins: List[Tuple[int, int]]) -> Optional[str]:
+    for a0, a1 in bins:
+        if a0 <= age <= a1:
+            return f"{a0}-{a1}"
+    return None
+
+
+def plot_births_by_age_bins(doc: Dict[str, Any], people: Dict[int, Person], meta: Dict[str, Any]) -> None:
+    """Nascimentos por ano por faixa etária da mãe e do pai (usa born_year do índice)."""
+    bins = [(18, 22), (23, 27), (28, 32), (33, 37), (38, 42), (43, 49)]
+
+    mother_counts: Dict[int, Counter] = defaultdict(Counter)
+    father_counts: Dict[int, Counter] = defaultdict(Counter)
+
+    for ev in iter_events(doc):
+        if ev_type(ev) != "birth":
+            continue
+        y = ev_year(ev)
+        d = ev_data(ev)
+
+        m = d.get("mother")
+        f = d.get("father")
+        if m is None or f is None:
+            continue
+
+        try:
+            m = int(m)
+            f = int(f)
+        except Exception:
+            continue
+
+        pm = people.get(m)
+        pf = people.get(f)
+        if not pm or not pf or pm.born_year is None or pf.born_year is None:
+            continue
+
+        am = y - int(pm.born_year)
+        af = y - int(pf.born_year)
+
+        bm = _age_bin(am, bins)
+        bf = _age_bin(af, bins)
+        if bm:
+            mother_counts[y][bm] += 1
+        if bf:
+            father_counts[y][bf] += 1
+
+    first_year = int(meta.get("first_year") or 0)
+    last_year = int(meta.get("last_year") or first_year)
+    years = list(range(first_year, last_year + 1))
+    labels = [f"{a}-{b}" for a, b in bins]
+
+    plt.figure()
+    for lab in labels:
+        ys = [mother_counts[y][lab] for y in years]
+        plt.plot(years, ys, label=f"Mãe {lab}")
+    plt.title("Nascimentos por ano por faixa etária (mãe)")
+    plt.xlabel("Ano")
+    plt.ylabel("Nascimentos/ano")
+    plt.grid(True)
+    plt.legend()
+
+    plt.figure()
+    for lab in labels:
+        ys = [father_counts[y][lab] for y in years]
+        plt.plot(years, ys, label=f"Pai {lab}")
+    plt.title("Nascimentos por ano por faixa etária (pai)")
+    plt.xlabel("Ano")
+    plt.ylabel("Nascimentos/ano")
+    plt.grid(True)
+    plt.legend()
+
+
+def plot_genes_by_birth_cohort(people: Dict[int, Person], meta: Dict[str, Any]) -> None:
+    """DNA médio por coorte de nascimento (usa DNA disponível em final_people).
+    Observação: se o DNA só existe no dump final, isso mede só quem tem DNA no final (viés de sobrevivência).
+    """
+    genes = ["speed", "fert", "soc", "vit"]
+    BIN = 20  # anos por coorte
+
+    cohorts: Dict[int, List[Dict[str, int]]] = defaultdict(list)
+    for p in people.values():
+        if p.born_year is None or not p.dna:
+            continue
+        if any(g not in p.dna for g in genes):
+            continue
+        c0 = (int(p.born_year) // BIN) * BIN
+        cohorts[c0].append(p.dna)
+
+    if not cohorts:
+        print("[AVISO] Sem DNA suficiente pra plotar genes por coorte (final_people não trouxe dna?).")
+        return
+
+    xs = sorted(cohorts.keys())
+
+    for g in genes:
+        ys = []
+        for c0 in xs:
+            vals = [dna[g] for dna in cohorts[c0] if g in dna]
+            ys.append(sum(vals) / len(vals) if vals else 0.0)
+
+        plt.figure()
+        plt.plot(xs, ys)
+        plt.title(f"DNA médio por coorte de nascimento ({BIN} anos): {g}")
+        plt.xlabel("Ano (início da coorte)")
+        plt.ylabel("Média do gene")
+        plt.grid(True)
+
+    plt.figure()
+    plt.plot(xs, [len(cohorts[c0]) for c0 in xs])
+    plt.title(f"Amostra com DNA por coorte ({BIN} anos)")
+    plt.xlabel("Ano (início da coorte)")
+    plt.ylabel("N pessoas (com DNA)")
+    plt.grid(True)
+
+
+def plot_profession_chosen_per_year(doc: Dict[str, Any], meta: Dict[str, Any]) -> None:
+    """Fluxo: quantas escolhas de profissão por ano (profession_chosen)."""
+    by_year_prof: Dict[int, Counter] = defaultdict(Counter)
+
+    for ev in iter_events(doc):
+        if ev_type(ev) != "profession_chosen":
+            continue
+        y = ev_year(ev)
+        d = ev_data(ev)
+        prof = get_profession(d)
+        if not prof:
+            continue
+        by_year_prof[y][prof] += 1
+
+    first_year = int(meta.get("first_year") or 0)
+    last_year = int(meta.get("last_year") or first_year)
+    years = list(range(first_year, last_year + 1))
+    all_profs = sorted({p for y in by_year_prof for p in by_year_prof[y].keys()})
+
+    if not all_profs:
+        print("[AVISO] Não achei nenhum evento profession_chosen pra plotar.")
+        return
+
+    plt.figure()
+    for prof in all_profs:
+        ys = [by_year_prof[y][prof] for y in years]
+        plt.plot(years, ys, label=prof)
+
+    plt.title("Profissão escolhida por ano (fluxo)")
+    plt.xlabel("Ano")
+    plt.ylabel("Escolhas/ano")
+    plt.grid(True)
+    plt.legend()
+
+
+def plot_dna_by_profession(people: Dict[int, Person]) -> None:
+    """DNA médio por profissão final (usa DNA disponível em final_people)."""
+    genes = ["speed", "fert", "soc", "vit"]
+    buckets: Dict[str, List[Dict[str, int]]] = defaultdict(list)
+
+    for p in people.values():
+        if not p.final_profession or not p.dna:
+            continue
+        if any(g not in p.dna for g in genes):
+            continue
+        buckets[p.final_profession].append(p.dna)
+
+    if not buckets:
+        print("[AVISO] Sem dados suficientes de DNA+profissão (talvez final_people não tem dna?).")
+        return
+
+    profs = sorted(buckets.keys())
+
+    for g in genes:
+        means = []
+        ns = []
+        for prof in profs:
+            vals = [dna[g] for dna in buckets[prof] if g in dna]
+            means.append(sum(vals) / len(vals) if vals else 0.0)
+            ns.append(len(vals))
+
+        plt.figure()
+        plt.plot(range(len(profs)), means, marker="o")
+        plt.title(f"DNA médio por profissão: {g}")
+        plt.xlabel("Profissão (índice)")
+        plt.ylabel("Média do gene")
+        plt.grid(True)
+
+        print(f"\nDNA médio por profissão ({g}):")
+        for i, prof in enumerate(profs):
+            print(f"  {i:02d} {prof}: {means[i]:.3f} (n={ns[i]})")
+
+
+# ---------- FITNESS (reprodução + sobrevivência) ----------
+
+def _safe_mean(xs: List[Optional[float]]) -> float:
+    xs2 = [x for x in xs if x is not None]
+    return mean(xs2) if xs2 else 0.0
+
+
+def _safe_median(xs: List[Optional[float]]) -> float:
+    xs2 = [x for x in xs if x is not None]
+    return median(xs2) if xs2 else 0.0
+
+
+def _person_kids(p: Person) -> int:
+    if p.kids_count is not None:
+        return int(p.kids_count)
+    if p.children:
+        return len(p.children)
+    return 0
+
+
+def _person_lifespan(p: Person, last_year: int) -> Optional[int]:
+    if p.born_year is None:
+        return None
+    by = int(p.born_year)
+    if p.died_year is not None:
+        return max(0, int(p.died_year) - by)
+    return max(0, int(last_year) - by)
+
+
+def compute_fitness_tables(people: Dict[int, Person], last_year: int):
+    """Retorna:
+      - per_prof: dict[prof] -> listas de kids / lifespan / fitness
+      - per_person_rows: ranking por pessoa
+    """
+    rows = []
+    for p in people.values():
+        prof = p.final_profession
+        if not prof:
+            continue
+        kids = _person_kids(p)
+        life = _person_lifespan(p, last_year)
+        if life is None:
+            continue
+        rows.append((p.id, prof, kids, life))
+
+    if not rows:
+        return {}, []
+
+    kids_all = [r[2] for r in rows]
+    life_all = [r[3] for r in rows]
+
+    k_min, k_max = min(kids_all), max(kids_all)
+    l_min, l_max = min(life_all), max(life_all)
+
+    def norm(x, mn, mx):
+        if mx <= mn:
+            return 0.0
+        return (x - mn) / (mx - mn)
+
+    # pesos (ajusta se quiser)
+    w_kids = 0.65
+    w_life = 0.35
+
+    per_prof = {}
+    per_person_rows = []
+
+    for pid, prof, kids, life in rows:
+        nk = norm(kids, k_min, k_max)
+        nl = norm(life, l_min, l_max)
+        fitness = w_kids * nk + w_life * nl  # [0..1]
+
+        per_person_rows.append({
+            "pid": pid,
+            "prof": prof,
+            "kids": kids,
+            "lifespan": life,
+            "fitness": fitness,
+        })
+
+        if prof not in per_prof:
+            per_prof[prof] = {"kids": [], "lifespan": [], "fitness": []}
+        per_prof[prof]["kids"].append(kids)
+        per_prof[prof]["lifespan"].append(life)
+        per_prof[prof]["fitness"].append(fitness)
+
+    return per_prof, per_person_rows
+
+
+def print_fitness_report(people: Dict[int, Person], meta: Dict[str, Any], top_n: int = 15) -> None:
+    last_year = int(meta.get("last_year") or 0)
+    per_prof, per_person = compute_fitness_tables(people, last_year)
+
+    if not per_prof:
+        print("\n[AVISO] Não consegui montar fitness (faltou born_year/died_year?).")
+        return
+
+    print("\n=== FITNESS (reprodução + longevidade) POR PROFISSÃO ===")
+    prof_rows = []
+    for prof, d in per_prof.items():
+        prof_rows.append({
+            "prof": prof,
+            "n": len(d["fitness"]),
+            "kids_mean": _safe_mean(d["kids"]),
+            "kids_median": _safe_median(d["kids"]),
+            "life_mean": _safe_mean(d["lifespan"]),
+            "life_median": _safe_median(d["lifespan"]),
+            "fitness_mean": _safe_mean(d["fitness"]),
+            "fitness_median": _safe_median(d["fitness"]),
+        })
+
+    prof_rows.sort(key=lambda r: r["fitness_mean"], reverse=True)
+    for r in prof_rows:
+        print(
+            f"  {r['prof']}: n={r['n']} | kids μ={r['kids_mean']:.2f} (med={r['kids_median']:.0f}) | "
+            f"vida μ={r['life_mean']:.2f} (med={r['life_median']:.0f}) | "
+            f"fitness μ={r['fitness_mean']:.3f} (med={r['fitness_median']:.3f})"
+        )
+
+    per_person.sort(key=lambda x: x["fitness"], reverse=True)
+    print(f"\n=== TOP {top_n} INDIVÍDUOS POR FITNESS ===")
+    for r in per_person[:top_n]:
+        print(f"  ID {r['pid']} | {r['prof']:<8} | kids={r['kids']:<2} | vida={r['lifespan']:<3} | fitness={r['fitness']:.3f}")
+
+
+def plot_fitness_by_profession(people: Dict[int, Person], meta: Dict[str, Any]) -> None:
+    last_year = int(meta.get("last_year") or 0)
+    per_prof, _ = compute_fitness_tables(people, last_year)
+    if not per_prof:
+        return
+
+    profs = sorted(per_prof.keys())
+    kids_mean = [_safe_mean(per_prof[p]["kids"]) for p in profs]
+    life_mean = [_safe_mean(per_prof[p]["lifespan"]) for p in profs]
+    fit_mean = [_safe_mean(per_prof[p]["fitness"]) for p in profs]
+
+    plt.figure()
+    plt.plot(range(len(profs)), kids_mean, marker="o")
+    plt.title("Média de filhos por profissão")
+    plt.xlabel("Profissão (índice)")
+    plt.ylabel("Filhos (média)")
+    plt.grid(True)
+    print("\n[ÍNDICES PROFISSÃO] (pra ler os gráficos)")
+    for i, p in enumerate(profs):
+        print(f"  {i:02d} -> {p}")
+
+    plt.figure()
+    plt.plot(range(len(profs)), life_mean, marker="o")
+    plt.title("Longevidade média por profissão")
+    plt.xlabel("Profissão (índice)")
+    plt.ylabel("Anos (média)")
+    plt.grid(True)
+
+    plt.figure()
+    plt.plot(range(len(profs)), fit_mean, marker="o")
+    plt.title("Fitness composto médio por profissão")
+    plt.xlabel("Profissão (índice)")
+    plt.ylabel("Fitness (0..1)")
+    plt.grid(True)
+
 
 # =========================
 # 4) CONSULTA POR ID + ÁRVORE ASCII
@@ -910,7 +1249,6 @@ def main():
     print("\n=== POPULAÇÃO INDEXADA ===")
     print(f"Pessoas no índice: {len(people)}")
 
-    # debug útil (porque o mundo mente)
     died = sum(1 for p in people.values() if p.died_year is not None)
     profs = sum(1 for p in people.values() if p.final_profession is not None)
     print(f"[DEBUG] Pessoas com died_year preenchido: {died}")
@@ -956,6 +1294,7 @@ def main():
             f"duração={r['duration_years']} | viva_no_fim={r['alive_at_end']}"
         )
 
+    print_fitness_report(people, meta, top_n=15)
 
     # =========================
     # GRÁFICOS (novas métricas)
@@ -963,8 +1302,6 @@ def main():
     try:
         plot_new_metrics(doc, people, meta)
     except Exception as ex:
-        # Se teu matplotlib estiver em backend "Agg" ou sem GUI, ele não abre janela.
-        # Pelo menos não vamos falhar silenciosamente.
         print("\n[AVISO] Não consegui abrir os gráficos (backend/headless?).")
         print("        Erro:", ex)
         print("        Dica: no Windows, tenta:  python -m pip install pyqt6  (ou instala o Python com Tk).")

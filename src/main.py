@@ -19,10 +19,10 @@ WORK_AGE = 16
 REPRO_MIN_AGE = 18
 REPRO_MAX_AGE = 38
 
-MEET_RADIUS = 5               # raio para "conhecer"
+MEET_RADIUS = 3               # raio para "conhecer"
 PAIR_CHANCE_PER_YEAR = 0.51   # chance de formar par (se tiver alguém perto)
-BIRTH_CHANCE_PER_YEAR = 0.5   # chance de ter filho (se coabitando e dentro da idade)
-MAX_KIDS_PER_COUPLE = 4       # AGORA é por casal (meta do casal)
+BIRTH_CHANCE_PER_YEAR = 0.41   # chance de ter filho (se coabitando e dentro da idade)
+MAX_KIDS_PER_COUPLE = 3       # meta por casal
 
 MUTATION_CHANCE = 0.5
 MUTATION_STEP = 2
@@ -36,46 +36,39 @@ ELDER_STEPS = 4
 # casal buscando espaço: apenas “o suficiente”
 SEEK_SPACE_STEP_LIMIT = 1
 
+# permitir "passar por cima": pode pular tiles ocupados, mas só parar em tile livre
+HOP_LIMIT = 2
+
 # -------------------------
 # "desespero social"
 # -------------------------
-# Após N anos solteiro na janela fértil, começa a procurar fora do bairro:
-DESPERATION_YEARS_1 = 3   # começa a "abrir o radar"
-DESPERATION_YEARS_2 = 6   # começa a considerar bem mais gente
+DESPERATION_YEARS_1 = 3
+DESPERATION_YEARS_2 = 6
 
-# Expansões de busca (Manhattan)
-EXTRA_RADIUS_L1 = 3       # radius extra no nível 1
-EXTRA_RADIUS_L2 = 10      # radius extra no nível 2
+EXTRA_RADIUS_L1 = 3
+EXTRA_RADIUS_L2 = 7
 
-# Chance base de tentar fora do bairro por ano quando desesperado
 CROSS_ZONE_PROB_L1 = 0.35
 CROSS_ZONE_PROB_L2 = 0.75
 
 # -------------------------
-# NOVO: "bairro cultural" do filho
+# "bairro cultural" do filho
 # -------------------------
-# Probabilidade do filho "crescer culturalmente" no bairro em que nasceu
 CULTURE_STAY_BIRTH_ZONE = 0.70
-CULTURE_PICK_PARENT_ZONE = 0.20  # escolhe zona cultural de um dos pais
-# sobra 0.10 -> aleatório leve (mistura fraca)
+CULTURE_PICK_PARENT_ZONE = 0.20
 
 # -------------------------
-# separação / divórcio (AGORA FAZ SENTIDO)
+# separação / divórcio
 # -------------------------
-# Só começa a cogitar divórcio depois de coabitar um tempo
 MIN_COHAB_YEARS_BEFORE_DIVORCE = 3
-
-# Só aumenta chance de divórcio por falta de filho depois desse tempo coabitando
 DIVORCE_NO_BABY_YEARS_AFTER_COHAB = 5
 
-DIVORCE_BASE_PER_YEAR = 0.02      # base anual (baixo pra não virar dança das cadeiras)
-DIVORCE_COOLDOWN_YEARS = 2        # anos "fora do mercado" pós-separação
-DIVORCE_MIN_RELATION_YEARS = 1    # evita separar no ano que formou par
-DIVORCE_MAX_P = 0.35              # teto de probabilidade
-
+DIVORCE_BASE_PER_YEAR = 0.02
+DIVORCE_COOLDOWN_YEARS = 2
+DIVORCE_MIN_RELATION_YEARS = 1
+DIVORCE_MAX_P = 0.35
 
 # zonas (profissão -> retângulo)
-# (x0, y0, x1, y1) com x1/y1 exclusivos
 PROFESSIONS = {
     "Farmer":   {"zone": (0, 0, 20, 20),  "color": (60, 200, 80)},
     "Smith":    {"zone": (20, 0, 40, 20), "color": (200, 80, 60)},
@@ -94,7 +87,7 @@ DNA_BOUNDS = {
 # pesos por profissão
 PROF_WEIGHTS = {
     "Farmer":   {"speed": 0.7, "fert": 1.3, "soc": 0.9, "vit": 1.1},
-    "Smith":    {"speed": 0.8, "fert": 0.9, "soc": 0.9, "vit": 1.4},
+    "Smith":    {"speed": 0.8, "fert": 0.9, "soc": 0.9, "vit": 1.2},  # nerf: era 1.4
     "Merchant": {"speed": 0.9, "fert": 0.9, "soc": 1.4, "vit": 0.9},
     "Hunter":   {"speed": 1.3, "fert": 0.9, "soc": 0.8, "vit": 1.0},
 }
@@ -193,11 +186,8 @@ class Person:
     born_year: int = 0
     died_year: Optional[int] = None
 
-    # NOVO: tempo solteiro (somente janela fértil) e "bairro cultural"
     years_single: int = 0
-    culture_prof: Optional[str] = None  # bairro cultural antes do trabalho
-
-    # NOVO: cooldown pós-separação (ano em que pode voltar a parear)
+    culture_prof: Optional[str] = None
     cooldown_until_year: int = 0
 
 
@@ -214,7 +204,6 @@ class World:
         self.occ: Dict[Tuple[int, int], List[int]] = {}
         self.events: List[dict] = []
 
-        # NOVO: meta por casal (filhos/ano formado/ano coabitação/último nascimento)
         self.couples: Dict[Tuple[int, int], dict] = {}
 
     def log(self, etype: str, data: dict):
@@ -256,23 +245,37 @@ class World:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, indent=2)
 
+    # =========================
+    # SPAWN: 20 de cada profissão
+    # =========================
     def init_population(self):
-        for _ in range(START_POP):
-            x = random.randrange(GRID_W)
-            y = random.randrange(GRID_H)
-            tries = 0
-            while (x, y) in self.occ and tries < 50:
-                x = random.randrange(GRID_W)
-                y = random.randrange(GRID_H)
-                tries += 1
+        """Inicializa com 20 pessoas de cada profissão (80 total), já nas zonas."""
+        per_prof = 8
 
-            p = self.add_person(x=x, y=y, age=random.randint(0, 55), dna=random_dna(), born_year=0)
-            # define bairro cultural inicial pelo tile
-            p.culture_prof = zone_of_tile(p.x, p.y)
+        for prof, info in PROFESSIONS.items():
+            x0, y0, x1, y1 = info["zone"]
+            created = 0
+            safety = 0
 
-            if p.age >= WORK_AGE:
-                p.profession = choose_profession(p.dna)
+            while created < per_prof and safety < 200000:
+                safety += 1
+                x = random.randrange(x0, x1)
+                y = random.randrange(y0, y1)
+
+                if (x, y) in self.occ:
+                    continue
+
+                p = self.add_person(
+                    x=x,
+                    y=y,
+                    age=random.randint(WORK_AGE, 55),
+                    dna=random_dna(),
+                    born_year=0,
+                    culture_prof=prof
+                )
+                p.profession = prof
                 self.log("profession_chosen", {"pid": p.pid, "profession": p.profession})
+                created += 1
 
     def add_person(self, x, y, age, dna, born_year, mother=None, father=None, culture_prof=None) -> Person:
         pid = self.next_id
@@ -320,17 +323,14 @@ class World:
         self.occ.setdefault((x, y), []).append(p.pid)
 
     def _break_pair(self, a: Person, b: Person, reason: str):
-        # solta vínculo
         a.partner_id = None
         b.partner_id = None
         a.cohabiting = False
         b.cohabiting = False
 
-        # cooldown
         a.cooldown_until_year = max(a.cooldown_until_year, self.year + DIVORCE_COOLDOWN_YEARS)
         b.cooldown_until_year = max(b.cooldown_until_year, self.year + DIVORCE_COOLDOWN_YEARS)
 
-        # log
         k = couple_key(a.pid, b.pid)
         meta = self.couples.get(k, {})
         self.log("separation", {
@@ -372,7 +372,7 @@ class World:
         del self.people[pid]
 
     # =========================
-    # Espaço pra ter filhos (local)
+    # Espaço pra ter filhos
     # =========================
     def has_free_adjacent(self, x: int, y: int) -> bool:
         for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
@@ -436,7 +436,6 @@ class World:
     # Movimento
     # =========================
     def target_for_person(self, p: Person) -> Tuple[int, int]:
-        # Crianças/adolescentes: tendem a ficar no bairro cultural
         if p.profession is None:
             if p.culture_prof is not None:
                 return zone_center(PROFESSIONS[p.culture_prof]["zone"])
@@ -455,7 +454,6 @@ class World:
         return ((ax + bx) // 2, (ay + by) // 2)
 
     def step_towards(self, p: Person, tx: int, ty: int, partner_id: Optional[int] = None) -> bool:
-        """Dá 1 passo em direção a (tx, ty). Se partner_id for passado, permite entrar no tile do parceiro."""
         dx = 0 if p.x == tx else (1 if tx > p.x else -1)
         dy = 0 if p.y == ty else (1 if ty > p.y else -1)
 
@@ -471,7 +469,6 @@ class World:
             if dx != 0:
                 moves.append((p.x + dx, p.y))
 
-        # fallback (contorno simples)
         moves += [(p.x + 1, p.y), (p.x - 1, p.y), (p.x, p.y + 1), (p.x, p.y - 1)]
 
         for nx, ny in moves:
@@ -490,6 +487,29 @@ class World:
 
         return False
 
+    def _try_place_with_hop(self, start_x: int, start_y: int, dx: int, dy: int) -> Optional[Tuple[int, int]]:
+        if dx == 0 and dy == 0:
+            return None
+
+        for hop in range(1, HOP_LIMIT + 1):
+            nx = clamp(start_x + dx * hop, 0, GRID_W - 1)
+            ny = clamp(start_y + dy * hop, 0, GRID_H - 1)
+            if (nx, ny) not in self.occ:
+                return (nx, ny)
+
+        side_dirs = [(dy, dx), (-dy, -dx), (dx, -dy), (-dx, dy)]
+        random.shuffle(side_dirs)
+        for sx, sy in side_dirs:
+            if sx == 0 and sy == 0:
+                continue
+            for hop in range(1, HOP_LIMIT + 1):
+                nx = clamp(start_x + sx * hop, 0, GRID_W - 1)
+                ny = clamp(start_y + sy * hop, 0, GRID_H - 1)
+                if (nx, ny) not in self.occ:
+                    return (nx, ny)
+
+        return None
+
     def move_person(self, p: Person):
         steps = CHILD_STEPS if p.age < WORK_AGE else (ELDER_STEPS if p.age >= ELDER_AGE else ADULT_STEPS)
         tx, ty = self.target_for_person(p)
@@ -500,25 +520,23 @@ class World:
 
             if dx != 0 and dy != 0:
                 if random.random() < 0.5:
-                    nx, ny = p.x + dx, p.y
+                    step_dx, step_dy = dx, 0
                 else:
-                    nx, ny = p.x, p.y + dy
+                    step_dx, step_dy = 0, dy
             else:
-                nx, ny = p.x + dx, p.y + dy
+                step_dx, step_dy = dx, dy
 
             if random.random() < 0.15:
-                nx = p.x + random.choice([-1, 0, 1])
-                ny = p.y + random.choice([-1, 0, 1])
+                step_dx = random.choice([-1, 0, 1])
+                step_dy = random.choice([-1, 0, 1])
 
-            nx = clamp(nx, 0, GRID_W - 1)
-            ny = clamp(ny, 0, GRID_H - 1)
-
-            if (nx, ny) in self.occ:
+            landing = self._try_place_with_hop(p.x, p.y, step_dx, step_dy)
+            if landing is None:
                 return
-            self.place(p, nx, ny)
+
+            self.place(p, landing[0], landing[1])
 
     def move_couple_unit(self, a: Person, b: Person, steps: int, tx: int, ty: int):
-        # prioridade: achar espaço mínimo local pra nascer filho
         if not self.has_free_adjacent(a.x, a.y):
             for _ in range(SEEK_SPACE_STEP_LIMIT):
                 step = self.choose_space_step_for_couple(a, b)
@@ -529,35 +547,32 @@ class World:
                 self.place(b, nx, ny)
             return
 
-        # movimento normal
         for _ in range(steps):
             dx = 0 if a.x == tx else (1 if tx > a.x else -1)
             dy = 0 if a.y == ty else (1 if ty > a.y else -1)
 
             if dx != 0 and dy != 0:
                 if random.random() < 0.5:
-                    nx, ny = a.x + dx, a.y
+                    step_dx, step_dy = dx, 0
                 else:
-                    nx, ny = a.x, a.y + dy
+                    step_dx, step_dy = 0, dy
             else:
-                nx, ny = a.x + dx, a.y + dy
+                step_dx, step_dy = dx, dy
 
             if random.random() < 0.15:
-                nx = a.x + random.choice([-1, 0, 1])
-                ny = a.y + random.choice([-1, 0, 1])
+                step_dx = random.choice([-1, 0, 1])
+                step_dy = random.choice([-1, 0, 1])
 
-            nx = clamp(nx, 0, GRID_W - 1)
-            ny = clamp(ny, 0, GRID_H - 1)
-
-            if (nx, ny) in self.occ:
+            landing = self._try_place_with_hop(a.x, a.y, step_dx, step_dy)
+            if landing is None:
                 return
-            self.place(a, nx, ny)
-            self.place(b, nx, ny)
+
+            self.place(a, landing[0], landing[1])
+            self.place(b, landing[0], landing[1])
 
     def move_all(self):
         moved = set()
 
-        # move casais (ou faz eles se encontrarem de verdade)
         for p in list(self.people.values()):
             if p.partner_id is None:
                 continue
@@ -572,18 +587,15 @@ class World:
             moved.add(p.pid)
             moved.add(q.pid)
 
-            # já coabitam juntos: move como unidade
             if p.cohabiting and q.cohabiting and (p.x, p.y) == (q.x, q.y):
                 steps = ADULT_STEPS if max(p.age, q.age) < ELDER_AGE else ELDER_STEPS
                 tx, ty = self.target_for_couple(p, q)
                 self.move_couple_unit(p, q, steps, tx, ty)
                 continue
 
-            # NÃO coabitam: modo ENCONTRO (os dois vão um na direção do outro)
             self.step_towards(p, q.x, q.y, partner_id=q.pid)
             self.step_towards(q, p.x, p.y, partner_id=p.pid)
 
-            # se agora estão no mesmo tile, marca coabitação imediatamente
             if (p.x, p.y) == (q.x, q.y):
                 p.cohabiting = True
                 q.cohabiting = True
@@ -598,7 +610,6 @@ class World:
 
                 self.log("cohabitation", {"a": p.pid, "b": q.pid, "pos": [p.x, p.y]})
 
-        # move solteiros
         for p in list(self.people.values()):
             if p.partner_id is None:
                 self.move_person(p)
@@ -610,78 +621,66 @@ class World:
         self.births_last = 0
         self.deaths_last = 0
 
-        # 1) envelhecer
         for p in list(self.people.values()):
             p.age += 1
 
-        # 1.5) atualizar "anos solteiro" só na janela fértil
         for p in list(self.people.values()):
             if p.partner_id is None and (REPRO_MIN_AGE <= p.age <= REPRO_MAX_AGE):
                 p.years_single += 1
             else:
-                # fora da janela ou casado: não acumula pressão social
                 if p.partner_id is not None:
                     p.years_single = 0
 
-        # 2) escolher profissão ao atingir idade de trabalho
+        # mortes (teto duro + velhice mais perigosa)
+        MAX_AGE = 120
+
         for p in list(self.people.values()):
-            if p.profession is None and p.age >= WORK_AGE:
-                inherited = None
-                if p.mother_id is not None and p.mother_id in self.people:
-                    inherited = self.people[p.mother_id].profession
-                if inherited is None and p.father_id is not None and p.father_id in self.people:
-                    inherited = self.people[p.father_id].profession
+            if p.age >= MAX_AGE:
+                self.kill(p.pid)
+                continue
 
-                if inherited is not None and random.random() < 0.85:
-                    p.profession = inherited
-                else:
-                    p.profession = choose_profession(p.dna)
-
-                self.log("profession_chosen", {"pid": p.pid, "profession": p.profession})
-
-        # 3) mortes
-        for p in list(self.people.values()):
             base = 0.002
-            age_factor = max(0.0, (p.age - 35) / 80.0)
+
+            if p.age < 50:
+                age_factor = 0.0
+            elif p.age < 80:
+                age_factor = (p.age - 50) / 30.0
+            else:
+                age_factor = 1.0 + (p.age - 80) / 20.0
+
             vit = p.dna["vit"] / 10.0
-            death_p = base + age_factor * (0.05) * (1.2 - vit)
+
+            prof_bonus = 1.0
+            if p.profession == "Smith":
+                prof_bonus = 0.85
+            elif p.profession == "Hunter":
+                prof_bonus = 1.10
+            elif p.profession == "Merchant":
+                prof_bonus = 1.05
+
+            death_p = base + age_factor * 0.06 * (1.2 - vit) * prof_bonus
+            death_p = clamp(death_p, 0.0, 0.95)
+
             if random.random() < death_p:
                 self.kill(p.pid)
 
-        # 4) mover
         self.move_all()
-
-        # 5) formar pares (com “escape” fora do bairro)
         self.form_pairs()
-
-        # 6) coabitar
         self.try_cohabit_pairs()
-
-        # 7) reproduzir
         self.try_births()
-
-        # 8) separações (depois de tentar ter filho)
         self.maybe_divorce_pairs()
 
         self.year += 1
 
-    # =========================
-    # NOVO: formar pares com fallback
-    # =========================
     def _preferred_zone_for_person(self, p: Person) -> Optional[Tuple[int, int, int, int]]:
-        # adulto tem profissão, senão usa cultura
         key = p.profession if p.profession is not None else p.culture_prof
         if key is None:
             return None
         return PROFESSIONS[key]["zone"]
 
     def _cross_zone_policy(self, p: Person) -> Tuple[bool, int]:
-        """
-        Decide se p pode procurar fora do bairro este ano e qual radius extra.
-        Mistura "desespero" com traço social (soc).
-        """
         ys = p.years_single
-        soc = p.dna["soc"] / 10.0  # 0.1..1.0
+        soc = p.dna["soc"] / 10.0
 
         if ys < DESPERATION_YEARS_1:
             return (False, 0)
@@ -706,8 +705,7 @@ class World:
 
             p_zone = self._preferred_zone_for_person(p)
             allow_cross, extra_r = self._cross_zone_policy(p)
-            base_r = MEET_RADIUS
-            r = base_r + (extra_r if allow_cross else 0)
+            r = MEET_RADIUS + (extra_r if allow_cross else 0)
 
             candidates_same = []
             candidates_cross = []
@@ -725,9 +723,8 @@ class World:
                 if manhattan((p.x, p.y), (q.x, q.y)) > r:
                     continue
 
-                soc = (p.dna["soc"] + q.dna["soc"]) / 20.0  # 0.1..1.0
+                soc = (p.dna["soc"] + q.dna["soc"]) / 20.0
 
-                # classifica: mesmo bairro (zona preferida) vs fora
                 same_zone = True
                 if p_zone is not None:
                     same_zone = in_zone(q.x, q.y, p_zone)
@@ -738,12 +735,8 @@ class World:
                     candidates_cross.append((q, soc))
 
             chosen = None
-
-            # 1) prioriza SEMPRE o bairro local
             if candidates_same:
                 chosen = random.choice(candidates_same)
-
-            # 2) se não tem ninguém local, e política deixou, tenta fora
             elif allow_cross and candidates_cross:
                 chosen = random.choice(candidates_cross)
 
@@ -753,7 +746,6 @@ class World:
             q, soc = chosen
             chance = PAIR_CHANCE_PER_YEAR * (0.6 + 0.8 * soc)
 
-            # pequeno "custo" social pra casar fora do bairro (mantém como minoria)
             if p_zone is not None and not in_zone(q.x, q.y, p_zone):
                 chance *= 0.85
 
@@ -765,7 +757,6 @@ class World:
                 p.years_single = 0
                 q.years_single = 0
 
-                # cria/resseta meta do casal
                 k = couple_key(p.pid, q.pid)
                 self.couples[k] = {
                     "kids": 0,
@@ -854,7 +845,6 @@ class World:
                 meta = {"kids": 0, "formed_year": self.year, "last_birth_year": None, "cohab_start_year": None}
                 self.couples[k] = meta
 
-            # limite real por casal
             if int(meta.get("kids", 0)) >= MAX_KIDS_PER_COUPLE:
                 continue
 
@@ -871,14 +861,11 @@ class World:
 
                 baby_dna = dna_child_from_parents(p.dna, q.dna)
 
-                # NOVO: define cultura do bebê (bairro)
-                birth_zone = zone_of_tile(p.x, p.y)  # tile do casal
-                culture = None
+                birth_zone = zone_of_tile(p.x, p.y)
                 r = random.random()
                 if r < CULTURE_STAY_BIRTH_ZONE and birth_zone is not None:
                     culture = birth_zone
                 elif r < CULTURE_STAY_BIRTH_ZONE + CULTURE_PICK_PARENT_ZONE:
-                    # escolhe cultura de um dos pais (se tiver profissão/cultura)
                     opts = []
                     if p.profession is not None:
                         opts.append(p.profession)
@@ -890,7 +877,6 @@ class World:
                         opts.append(q.culture_prof)
                     culture = random.choice(opts) if opts else birth_zone
                 else:
-                    # leve aleatoriedade: bairro cultural aleatório (mistura fraca)
                     culture = random.choice(list(PROFESSIONS.keys()))
 
                 baby = self.add_person(
@@ -903,11 +889,9 @@ class World:
                 self.generation += 1
                 self.births_last += 1
 
-                # contadores por pessoa (só pra estatística individual)
                 p.kids_count += 1
                 q.kids_count += 1
 
-                # meta do casal
                 meta["kids"] = int(meta.get("kids", 0)) + 1
                 meta["last_birth_year"] = self.year
 
@@ -926,9 +910,6 @@ class World:
                     "culture_prof": baby.culture_prof
                 })
 
-    # =========================
-    # separação / divórcio (só depois de coabitar e tentar ter filho)
-    # =========================
     def maybe_divorce_pairs(self):
         visited = set()
         for p in list(self.people.values()):
@@ -954,8 +935,6 @@ class World:
                 continue
 
             cohab_start = meta.get("cohab_start_year", None)
-
-            # se nunca coabitou, não divorcia por falta de filho (ainda estão tentando se encontrar)
             if cohab_start is None:
                 continue
 
@@ -963,11 +942,9 @@ class World:
             if cohab_years < MIN_COHAB_YEARS_BEFORE_DIVORCE:
                 continue
 
-            # precisa estar coabitando agora (pra não punir relação à distância)
             if not (p.cohabiting and q.cohabiting and (p.x, p.y) == (q.x, q.y)):
                 continue
 
-            # na janela fértil
             in_fertile = (REPRO_MIN_AGE <= p.age <= REPRO_MAX_AGE) and (REPRO_MIN_AGE <= q.age <= REPRO_MAX_AGE)
             if not in_fertile:
                 continue
@@ -984,7 +961,6 @@ class World:
             if years_no_baby >= DIVORCE_NO_BABY_YEARS_AFTER_COHAB:
                 p_div += 0.12 + 0.02 * min(10, years_no_baby - DIVORCE_NO_BABY_YEARS_AFTER_COHAB)
 
-            # filhos seguram
             p_div *= (1.0 - 0.10 * min(5, kids))
             p_div = clamp(p_div, 0.0, DIVORCE_MAX_P)
 
